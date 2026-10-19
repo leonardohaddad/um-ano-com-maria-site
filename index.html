@@ -105,23 +105,19 @@
   .grade strong { display: block; color: var(--azul-esc); font-size: .95rem; }
   .grade small { color: var(--cinza); font-size: .82rem; line-height: 1.4; display: block; margin-top: 2px; }
 
-  /* ---------- Depoimentos (estilo WhatsApp) ---------- */
+  /* ---------- Depoimentos ---------- */
   .depo { background: var(--azul-claro); }
-  .trilho-depo { align-items: stretch; padding: 24px calc((100% - 290px) / 2) 14px; }
-  .zap { width: 290px; border-radius: 20px; overflow: hidden; box-shadow: 0 18px 40px rgba(18,48,90,.18); background: #efe7dd; display: flex; flex-direction: column; }
-  .zap .zap-corpo { flex: 1; }
+  .trilho-depo { align-items: stretch; padding: 24px calc((100% - 300px) / 2) 14px; }
+  .trilho-depo .depo-card { width: 300px; margin: 0; background: #fff; border-radius: 18px; padding: 26px 22px 20px; box-shadow: 0 16px 40px rgba(18,48,90,.12); border-top: 4px solid var(--ouro-claro); display: flex; flex-direction: column; position: relative; }
+  .depo-card .aspas { font-family: var(--serif); font-size: 4.6rem; line-height: .6; color: var(--ouro-claro); height: 30px; }
+  .depo-card blockquote { flex: 1; font-family: var(--serif); font-size: 1.28rem; line-height: 1.38; color: var(--azul-esc); font-style: italic; margin: 8px 0 20px; }
+  .depo-card figcaption { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid #e9edf3; }
+  .depo-card .av { width: 42px; height: 42px; border-radius: 50%; color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 1.05rem; flex: none; }
+  .depo-card strong { display: block; font-size: .95rem; color: var(--tinta); }
+  .depo-card small { display: block; font-size: .78rem; color: var(--cinza); }
   .bolinhas-claras button { background: rgba(18,48,90,.2); }
   .bolinhas-claras button.ativo { background: var(--ouro); }
   .arraste-escuro { color: var(--cinza); }
-  .zap-topo { display: flex; align-items: center; gap: 10px; background: #075e54; color: #fff; padding: 12px 14px; }
-  .zap-topo strong { display: block; font-size: .95rem; }
-  .zap-topo small { font-size: .75rem; opacity: .8; }
-  .zap-av { width: 38px; height: 38px; border-radius: 50%; background: var(--azul); color: var(--ouro-claro); display: grid; place-items: center; font-size: 1.1rem; flex: none; }
-  .zap-corpo { padding: 14px 12px 18px; background-image: radial-gradient(rgba(0,0,0,.04) 1px, transparent 1.4px); background-size: 16px 16px; }
-  .zap-data { width: fit-content; margin: 10px auto 8px; background: #e1f2fb; color: #4a5a66; font-size: .72rem; padding: .25rem .65rem; border-radius: 8px; box-shadow: 0 1px 1px rgba(0,0,0,.08); }
-  .balao { position: relative; background: #fff; border-radius: 0 12px 12px 12px; padding: 8px 12px 10px; margin: 0 26px 4px 8px; font-size: .92rem; line-height: 1.45; box-shadow: 0 1px 1px rgba(0,0,0,.1); }
-  .balao::before { content: ""; position: absolute; top: 0; left: -8px; border: 8px solid transparent; border-top-color: #fff; border-right-color: #fff; border-width: 0 8px 10px 0; }
-  .balao b { display: block; font-size: .8rem; margin-bottom: 2px; }
 
   /* ---------- Oferta ---------- */
   .oferta-sec { background: linear-gradient(180deg, #fff, var(--creme)); }
@@ -275,29 +271,34 @@
     </div>
   </div>
   <div class="trilho trilho-depo" id="trilho-depo">
-    <div class="slide zap">
-      <div class="zap-topo"><span class="zap-av" style="background:#c2185b">M</span><div><strong>Mariana Alves</strong><small>Leitora</small></div></div>
-      <div class="zap-corpo"><div class="zap-data">08/09/2026</div><div class="balao">Comecei a ler em setembro e virou meu momento favorito da manhã. As reflexões são simples, mas me fazem pensar e conversar com Deus com mais calma.</div></div>
-    </div>
-    <div class="slide zap">
-      <div class="zap-topo"><span class="zap-av" style="background:#1e88e5">J</span><div><strong>Juliana Martins</strong><small>Leitora</small></div></div>
-      <div class="zap-corpo"><div class="zap-data">19/09/2026</div><div class="balao">Eu tinha dificuldade de manter uma rotina de oração. Esse devocional me ajudou a reservar alguns minutos do dia para a minha fé. Amei a leitura!</div></div>
-    </div>
-    <div class="slide zap">
-      <div class="zap-topo"><span class="zap-av" style="background:#2e7d32">R</span><div><strong>Ricardo Oliveira</strong><small>Leitor</small></div></div>
-      <div class="zap-corpo"><div class="zap-data">28/09/2026</div><div class="balao">Gostei muito de como as mensagens se conectam com situações do dia a dia. Terminei setembro com várias páginas marcadas para reler.</div></div>
-    </div>
-    <div class="slide zap">
-      <div class="zap-topo"><span class="zap-av" style="background:#8e24aa">F</span><div><strong>Fernanda Costa</strong><small>Leitora</small></div></div>
-      <div class="zap-corpo"><div class="zap-data">07/10/2026</div><div class="balao">Comecei em outubro e já estou lendo com minha mãe. Depois de cada leitura, a gente conversa sobre a mensagem. Virou um momento muito especial para nós!</div></div>
-    </div>
-    <div class="slide zap">
-      <div class="zap-topo"><span class="zap-av" style="background:#ef6c00">C</span><div><strong>Camila Ribeiro</strong><small>Leitora</small></div></div>
-      <div class="zap-corpo"><div class="zap-data">18/10/2026</div><div class="balao">É uma leitura acolhedora, daquelas que dá vontade de continuar. Tenho lido antes de dormir e adoro terminar o dia com uma reflexão sobre a Palavra.</div></div>
-    </div>
+    <figure class="slide depo-card">
+      <span class="aspas" aria-hidden="true">&ldquo;</span>
+      <blockquote>Comecei a ler em setembro e virou meu momento favorito da manhã. As reflexões são simples, mas me fazem pensar e conversar com Deus com mais calma.</blockquote>
+      <figcaption><span class="av" style="background:#c2185b">M</span><span><strong>Mariana Alves</strong><small>Leitora · desde set/2026</small></span></figcaption>
+    </figure>
+    <figure class="slide depo-card">
+      <span class="aspas" aria-hidden="true">&ldquo;</span>
+      <blockquote>Eu tinha dificuldade de manter uma rotina de oração. Esse devocional me ajudou a reservar alguns minutos do dia para a minha fé. Amei a leitura!</blockquote>
+      <figcaption><span class="av" style="background:#1e88e5">J</span><span><strong>Juliana Martins</strong><small>Leitora · desde set/2026</small></span></figcaption>
+    </figure>
+    <figure class="slide depo-card">
+      <span class="aspas" aria-hidden="true">&ldquo;</span>
+      <blockquote>Gostei muito de como as mensagens se conectam com situações do dia a dia. Terminei setembro com várias páginas marcadas para reler.</blockquote>
+      <figcaption><span class="av" style="background:#2e7d32">R</span><span><strong>Ricardo Oliveira</strong><small>Leitor · desde set/2026</small></span></figcaption>
+    </figure>
+    <figure class="slide depo-card">
+      <span class="aspas" aria-hidden="true">&ldquo;</span>
+      <blockquote>Comecei em outubro e já estou lendo com minha mãe. Depois de cada leitura, a gente conversa sobre a mensagem. Virou um momento muito especial para nós!</blockquote>
+      <figcaption><span class="av" style="background:#8e24aa">F</span><span><strong>Fernanda Costa</strong><small>Leitora · desde out/2026</small></span></figcaption>
+    </figure>
+    <figure class="slide depo-card">
+      <span class="aspas" aria-hidden="true">&ldquo;</span>
+      <blockquote>É uma leitura acolhedora, daquelas que dá vontade de continuar. Tenho lido antes de dormir e adoro terminar o dia com uma reflexão sobre a Palavra.</blockquote>
+      <figcaption><span class="av" style="background:#ef6c00">C</span><span><strong>Camila Ribeiro</strong><small>Leitora · desde out/2026</small></span></figcaption>
+    </figure>
   </div>
   <div class="bolinhas bolinhas-claras" id="bolinhas-depo"></div>
-  <p class="arraste arraste-escuro">← deslize para ver mais →</p>
+  <p class="arraste arraste-escuro">← deslize para ler mais →</p>
 </section>
 
 <!-- ============ OFERTA ============ -->
