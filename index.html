@@ -121,6 +121,13 @@
   .comunidade p { font-family: var(--serif); font-size: 1.45rem; line-height: 1.2; margin-top: 4px; }
   .comunidade p em { color: var(--ouro-claro); }
   .comunidade small { display: block; margin-top: 10px; font-size: .82rem; color: #b9c9e2; letter-spacing: .04em; }
+  /* Destaque +20.000 compacto: ícone à esquerda, número e texto à direita */
+  .comunidade { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; align-items: center; text-align: left; margin-top: 22px; padding: 16px 18px; border-radius: 18px; }
+  .comunidade .livro-ic { grid-row: span 2; width: 54px; height: 54px; }
+  .comunidade .livro-ic .livro { width: 32px; height: 24px; }
+  .comunidade .num { font-size: 2.1rem; margin-top: 0; }
+  .comunidade p { font-size: 1.05rem; margin-top: 2px; }
+  .comunidade small { display: none; }
   .bolinhas-claras button { background: rgba(18,48,90,.2); }
   .bolinhas-claras button.ativo { background: var(--ouro); }
   .arraste-escuro { color: var(--cinza); }
