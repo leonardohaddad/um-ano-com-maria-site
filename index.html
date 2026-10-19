@@ -2,15 +2,16 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#12305a">
 <title>Um Ano com Maria | Devocional diário de 366 dias</title>
-<meta name="description" content="Um encontro diário com Nossa Senhora: Palavra, frase do dia, oração e reflexão para cada um dos 366 dias do ano.">
+<meta name="description" content="Reze todos os dias com Maria em 5 minutos, pelo celular. Uma página para cada dia do ano, com Palavra, frase do dia, oração e reflexão.">
 <meta property="og:title" content="Um Ano com Maria | Devocional diário">
-<meta property="og:description" content="366 dias de fé, oração e esperança ao lado de Maria.">
+<meta property="og:description" content="Reze todos os dias com Maria em 5 minutos, pelo celular.">
 <meta property="og:image" content="img/capa-janeiro.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --azul: #1d4f91; --azul-esc: #12305a; --azul-claro: #eef2f8;
@@ -20,317 +21,348 @@
     --sans: "Inter", "Segoe UI", Arial, sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--sans); color: var(--tinta); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { font-family: var(--sans); color: var(--tinta); background: #fff; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   img, video { max-width: 100%; display: block; }
-  .container { width: min(1100px, 100% - 32px); margin-inline: auto; }
-  h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.12; }
-  h2 { font-size: clamp(2rem, 4.5vw, 2.9rem); color: var(--azul-esc); }
-  .rotulo { font-size: .78rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--ouro); margin-bottom: .8rem; }
+  .container { width: min(1040px, 100% - 32px); margin-inline: auto; }
+  h1, h2 { font-family: var(--serif); font-weight: 600; line-height: 1.08; }
+  h2 { font-size: 2.1rem; color: var(--azul-esc); }
+  h2 em { color: var(--ouro); }
+  .rotulo { font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--ouro); margin-bottom: .6rem; }
   .centro { text-align: center; }
-  .sub { color: var(--cinza); font-size: 1.08rem; max-width: 620px; margin: 1rem auto 0; }
-  section { padding: clamp(64px, 9vw, 110px) 0; }
+  section { padding: 56px 0; }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font: 700 1.05rem var(--sans); text-decoration: none; padding: 1.05rem 2.1rem; border-radius: 999px; background: linear-gradient(180deg, #f0d79c, var(--ouro-claro)); color: var(--azul-esc); box-shadow: 0 10px 28px rgba(184,137,59,.35); transition: transform .15s, box-shadow .15s; }
-  .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(184,137,59,.45); }
-  .btn-azul { background: var(--azul); color: #fff; box-shadow: 0 10px 28px rgba(29,79,145,.3); }
-  .seguro { font-size: .85rem; color: var(--cinza); margin-top: .9rem; }
+  /* ---------- Botão ---------- */
+  .btn { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: .5rem; width: 100%; font: 800 1.08rem var(--sans); text-decoration: none; padding: 1.1rem 1.4rem; border-radius: 14px; background: linear-gradient(180deg, #f3dca4, var(--ouro-claro)); color: var(--azul-esc); box-shadow: 0 10px 26px rgba(184,137,59,.38); -webkit-tap-highlight-color: transparent; transition: transform .12s; }
+  .btn:active { transform: scale(.97); }
+  .btn::after { content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.65), transparent); transform: skewX(-20deg); animation: brilho 3.2s infinite; }
+  @keyframes brilho { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+  .btn-azul { background: linear-gradient(180deg, #2a64ad, var(--azul)); color: #fff; box-shadow: 0 10px 26px rgba(29,79,145,.35); }
+  .mini { font-size: .82rem; color: var(--cinza); margin-top: .7rem; text-align: center; }
 
-  /* Topo */
-  .hero { background: radial-gradient(ellipse at 70% 30%, #2a64ad 0%, var(--azul) 40%, var(--azul-esc) 100%); color: #fff; padding: 28px 0 90px; position: relative; overflow: hidden; }
-  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(232,200,140,.5) 1px, transparent 1.5px); background-size: 46px 46px; opacity: .25; }
-  .topo { display: flex; justify-content: space-between; align-items: center; position: relative; }
-  .marca { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; }
+  /* ---------- Topo ---------- */
+  .hero { background: radial-gradient(ellipse at 50% 20%, #2a64ad 0%, var(--azul) 45%, var(--azul-esc) 100%); color: #fff; padding: 18px 0 44px; position: relative; overflow: hidden; text-align: center; }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(232,200,140,.6) 1px, transparent 1.6px); background-size: 38px 38px; opacity: .22; animation: ceu 40s linear infinite; }
+  @keyframes ceu { to { background-position: 0 -380px; } }
+  .hero > * { position: relative; }
+  .marca { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; }
   .marca em { color: var(--ouro-claro); }
-  .topo a { color: #fff; font-size: .9rem; font-weight: 600; text-decoration: none; opacity: .9; }
-  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; margin-top: 56px; position: relative; }
-  .selo { display: inline-block; background: rgba(232,200,140,.16); border: 1px solid rgba(232,200,140,.5); color: var(--ouro-claro); font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: .45rem 1rem; border-radius: 999px; }
-  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); margin: 1.2rem 0 1.1rem; }
+  .prova { display: inline-flex; align-items: center; gap: .5rem; margin-top: 18px; background: rgba(255,255,255,.1); border: 1px solid rgba(232,200,140,.4); border-radius: 999px; padding: .45rem .95rem; font-size: .82rem; color: #eef3fa; }
+  .prova b { color: var(--ouro-claro); font-weight: 800; }
+  .pontos { display: inline-flex; flex: none; }
+  .pontos i { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--azul); margin-left: -7px; background: linear-gradient(135deg, #f3dca4, #b8893b); }
+  .pontos i:first-child { margin-left: 0; }
+  .pontos i:nth-child(2) { background: linear-gradient(135deg, #c7303b, #7a1018); }
+  .pontos i:nth-child(3) { background: linear-gradient(135deg, #7a43aa, #3d1a5e); }
+  .hero h1 { font-size: 2.55rem; margin: 18px 0 12px; }
   .hero h1 em { color: var(--ouro-claro); }
-  .hero p.lead { font-size: 1.18rem; color: #dbe5f3; max-width: 540px; margin-bottom: 2rem; }
-  .hero .seguro { color: #b9c9e2; }
-  .capas { position: relative; height: 470px; }
-  .capas img { position: absolute; width: 58%; border-radius: 6px; box-shadow: 0 24px 50px rgba(0,0,0,.45); }
-  .capas img:nth-child(1) { left: 0; top: 40px; transform: rotate(-10deg); }
-  .capas img:nth-child(2) { left: 14%; top: 18px; transform: rotate(-4deg); }
-  .capas img:nth-child(3) { left: 28%; top: 6px; transform: rotate(3deg); }
-  .capas img:nth-child(4) { left: 42%; top: 0; transform: rotate(9deg); }
+  .hero .lead { font-size: 1.02rem; color: #d6e1f1; max-width: 520px; margin: 0 auto; }
+  .capas { position: relative; height: 290px; width: 300px; margin: 26px auto 8px; }
+  .capas img { position: absolute; width: 170px; left: 65px; top: 14px; border-radius: 5px; box-shadow: 0 18px 40px rgba(0,0,0,.45); animation: flutua 6s ease-in-out infinite; }
+  .capas img:nth-child(1) { transform: translateX(-72px) rotate(-14deg); animation-delay: -1.5s; }
+  .capas img:nth-child(2) { transform: translateX(-34px) rotate(-6deg); animation-delay: -3s; }
+  .capas img:nth-child(3) { transform: translateX(66px) rotate(12deg); animation-delay: -4.5s; }
+  .capas img:nth-child(4) { width: 180px; left: 60px; top: 0; }
+  @keyframes flutua { 50% { translate: 0 -8px; } }
+  .hero .cta { max-width: 420px; margin: 0 auto; }
+  .hero .mini { color: #b9c9e2; }
+  .preco-topo { display: flex; justify-content: center; align-items: baseline; gap: .5rem; margin-bottom: 14px; }
+  .preco-topo b { font-family: var(--serif); font-size: 2rem; color: #fff; }
+  .preco-topo small { color: var(--ouro-claro); font-size: .82rem; font-weight: 600; }
 
-  /* Benefícios rápidos */
-  .faixa { background: var(--creme); padding: 28px 0; border-bottom: 1px solid #efe6d3; }
-  .faixa ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 40px; }
-  .faixa li { font-weight: 600; color: var(--azul-esc); display: flex; align-items: center; gap: .55rem; }
-  .faixa li::before { content: "✦"; color: var(--ouro); }
+  /* ---------- Dor ---------- */
+  .dor { background: var(--creme); }
+  .dores { display: grid; gap: 12px; margin-top: 22px; }
+  .dores li { list-style: none; display: flex; gap: 12px; align-items: flex-start; background: #fff; border-radius: 14px; padding: 16px; border: 1px solid #efe4cd; font-size: .98rem; }
+  .dores li span { flex: none; font-size: 1.35rem; line-height: 1.2; }
+  .virada { margin-top: 28px; text-align: center; font-family: var(--serif); font-size: 1.55rem; line-height: 1.25; color: var(--azul-esc); }
+  .virada em { color: var(--ouro); }
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 16px; }
+  .chips span { background: var(--azul); color: #fff; font-size: .85rem; font-weight: 600; padding: .5rem .9rem; border-radius: 999px; }
 
-  /* Promessa */
-  .promessa { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
-  .promessa p { color: var(--cinza); font-size: 1.08rem; margin-top: 1.1rem; }
-  .promessa blockquote { margin-top: 1.6rem; padding: 1.2rem 1.4rem; border-left: 4px solid var(--ouro); background: var(--creme); font-family: var(--serif); font-size: 1.45rem; font-style: italic; color: var(--azul-esc); }
-  .pagina-img { border-radius: 6px; box-shadow: 0 24px 60px rgba(18,48,90,.22); transform: rotate(-2deg); }
+  /* ---------- Carrossel ---------- */
+  .por-dentro { background: var(--azul-esc); color: #fff; overflow: hidden; }
+  .por-dentro h2 { color: #fff; }
+  .por-dentro h2 em { color: var(--ouro-claro); }
+  .por-dentro .sub { color: #b9c9e2; margin-top: .5rem; font-size: .95rem; }
+  .trilho { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 26px calc((100% - 250px) / 2) 10px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .trilho::-webkit-scrollbar { display: none; }
+  .slide { flex: none; width: 250px; scroll-snap-align: center; transition: transform .35s, opacity .35s; opacity: .55; transform: scale(.92); }
+  .slide.ativo { opacity: 1; transform: scale(1); }
+  .slide img, .slide video { width: 100%; border-radius: 8px; box-shadow: 0 18px 40px rgba(0,0,0,.45); background: #fff; }
+  .trilho { align-items: center; }
+  .slide video { aspect-ratio: 9 / 16; object-fit: cover; background: #2e1347; border-radius: 14px; width: 82%; margin: 0 auto; }
+  .slide p { text-align: center; font-size: .85rem; color: #d6e1f1; margin-top: .7rem; }
+  .bolinhas { display: flex; justify-content: center; gap: 7px; margin-top: 8px; }
+  .bolinhas button { width: 8px; height: 8px; border-radius: 99px; border: 0; background: rgba(255,255,255,.3); transition: width .3s, background .3s; cursor: pointer; }
+  .bolinhas button.ativo { width: 22px; background: var(--ouro-claro); }
+  .arraste { text-align: center; font-size: .78rem; color: #8fa3c3; margin-top: 10px; }
 
-  /* O que tem em cada página */
-  .itens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
-  .item { background: #fff; border: 1px solid #e3e8f0; border-radius: 14px; padding: 26px 24px; }
-  .item .ic { width: 46px; height: 46px; border-radius: 12px; background: var(--azul-claro); color: var(--azul); display: grid; place-items: center; font-size: 1.3rem; margin-bottom: 14px; }
-  .item h3 { font-size: 1.5rem; color: var(--azul-esc); margin-bottom: .4rem; }
-  .item p { color: var(--cinza); font-size: .97rem; }
-  .bg-claro { background: var(--azul-claro); }
+  /* ---------- Em cada dia ---------- */
+  .grade { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+  .grade div { background: var(--azul-claro); border-radius: 14px; padding: 16px 14px; }
+  .grade b { display: block; font-size: 1.4rem; margin-bottom: 4px; }
+  .grade strong { display: block; color: var(--azul-esc); font-size: .95rem; }
+  .grade small { color: var(--cinza); font-size: .82rem; line-height: 1.4; display: block; margin-top: 2px; }
 
-  /* Meses */
-  .meses { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 48px; }
-  .mes img { border-radius: 6px; box-shadow: 0 14px 34px rgba(0,0,0,.18); transition: transform .2s; }
-  .mes img:hover { transform: translateY(-6px); }
-  .mes p { text-align: center; margin-top: .9rem; font-weight: 600; color: var(--azul-esc); }
-  .mes small { display: block; font-weight: 400; color: var(--cinza); font-family: var(--serif); font-style: italic; font-size: 1.05rem; }
+  /* ---------- Oferta ---------- */
+  .oferta-sec { background: linear-gradient(180deg, #fff, var(--creme)); }
+  .oferta { max-width: 460px; margin: 30px auto 0; background: #fff; border-radius: 22px; padding: 28px 20px 24px; box-shadow: 0 24px 60px rgba(18,48,90,.16); border: 2px solid var(--ouro-claro); position: relative; }
+  .oferta .fita { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--azul); color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: .35rem .9rem; border-radius: 999px; white-space: nowrap; }
+  .oferta img { width: 120px; margin: 4px auto 14px; border-radius: 4px; box-shadow: 0 12px 26px rgba(0,0,0,.25); }
+  .oferta ul { list-style: none; margin: 0 0 18px; }
+  .oferta li { padding: .5rem 0; border-bottom: 1px dashed #eadfc7; display: flex; gap: .6rem; font-size: .95rem; }
+  .oferta li::before { content: "✓"; flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--ouro); color: #fff; display: grid; place-items: center; font-size: .7rem; font-weight: 800; margin-top: 2px; }
+  .valor { text-align: center; }
+  .valor .de { font-size: .85rem; color: var(--cinza); }
+  .valor .por { font-family: var(--serif); font-size: 3.2rem; font-weight: 600; color: var(--azul-esc); line-height: 1; margin: .2rem 0; }
+  .valor .dia { display: inline-block; background: #fdf3df; color: #8a5a1c; font-weight: 700; font-size: .85rem; padding: .35rem .8rem; border-radius: 999px; margin-bottom: 16px; }
 
-  /* Vídeo */
-  .video-sec { background: var(--azul-esc); color: #fff; }
-  .video-sec h2 { color: #fff; }
-  .video-sec .sub { color: #b9c9e2; }
-  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-  .video-sec video { width: min(340px, 100%); margin-inline: auto; border-radius: 18px; box-shadow: 0 24px 60px rgba(0,0,0,.5); }
-  .natal { display: flex; gap: 16px; align-items: center; margin-top: 1.6rem; }
-  .natal img { width: 120px; border-radius: 4px; }
-  .natal p { color: #dbe5f3; font-size: .98rem; }
+  /* ---------- FAQ ---------- */
+  .faq { max-width: 640px; margin: 16px auto 0; }
+  .faq details { border-bottom: 1px solid #e3e8f0; padding: 15px 2px; }
+  .faq summary { cursor: pointer; font-weight: 600; color: var(--azul-esc); list-style: none; display: flex; justify-content: space-between; gap: 1rem; font-size: .97rem; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; color: var(--ouro); font-size: 1.35rem; line-height: 1; transition: transform .25s; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq p { color: var(--cinza); margin-top: .6rem; font-size: .93rem; }
 
-  /* Para quem é */
-  .para { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 28px; margin-top: 44px; max-width: 900px; margin-inline: auto; list-style: none; }
-  .para li { display: flex; gap: .8rem; align-items: flex-start; background: #fff; border-radius: 12px; padding: 18px 20px; border: 1px solid #ece4d2; }
-  .para li::before { content: "✓"; flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--ouro); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: .85rem; margin-top: 2px; }
-  .bg-creme { background: var(--creme); }
+  footer { background: #0c2142; color: #8fa3c3; text-align: center; font-size: .78rem; padding: 26px 16px 110px; }
 
-  /* Oferta */
-  .oferta { max-width: 560px; margin: 44px auto 0; background: #fff; border-radius: 22px; padding: 40px 32px; text-align: center; box-shadow: 0 30px 70px rgba(18,48,90,.16); border: 2px solid var(--ouro-claro); }
-  .oferta ul { list-style: none; text-align: left; margin: 1.4rem 0 1.8rem; }
-  .oferta li { padding: .55rem 0; border-bottom: 1px dashed #e6dcc6; display: flex; gap: .6rem; }
-  .oferta li::before { content: "✦"; color: var(--ouro); }
-  .preco { font-family: var(--serif); font-size: 3rem; color: var(--azul-esc); font-weight: 600; line-height: 1; }
-  .preco-obs { color: var(--cinza); font-size: .9rem; margin: .4rem 0 1.6rem; }
+  /* ---------- Barra fixa ---------- */
+  .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.97); box-shadow: 0 -8px 24px rgba(0,0,0,.14); transform: translateY(110%); transition: transform .35s ease; }
+  .barra.on { transform: none; }
+  .barra .p { line-height: 1.1; flex: none; }
+  .barra .p small { display: block; font-size: .68rem; color: var(--cinza); }
+  .barra .p b { font-family: var(--serif); font-size: 1.45rem; color: var(--azul-esc); }
+  .barra .btn { padding: .85rem 1rem; font-size: .98rem; border-radius: 12px; }
 
-  /* FAQ */
-  .faq { max-width: 760px; margin: 40px auto 0; }
-  .faq details { border-bottom: 1px solid #e3e8f0; padding: 18px 4px; }
-  .faq summary { cursor: pointer; font-weight: 600; color: var(--azul-esc); list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
-  .faq summary::after { content: "+"; color: var(--ouro); font-size: 1.4rem; line-height: 1; }
-  .faq details[open] summary::after { content: "−"; }
-  .faq p { color: var(--cinza); margin-top: .7rem; }
+  /* ---------- Animações de entrada ---------- */
+  .rv { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .rv.on { opacity: 1; transform: none; }
 
-  /* Final */
-  .final { background: radial-gradient(ellipse at 50% 0%, #2a64ad 0%, var(--azul) 45%, var(--azul-esc) 100%); color: #fff; text-align: center; }
-  .final h2 { color: #fff; }
-  .final h2 em { color: var(--ouro-claro); }
-  .final p { color: #dbe5f3; max-width: 560px; margin: 1rem auto 2rem; font-size: 1.08rem; }
-  footer { background: #0c2142; color: #8fa3c3; text-align: center; font-size: .85rem; padding: 28px 16px; }
-
-  .prova { margin-top: 1.4rem; display: inline-block; background: rgba(255,255,255,.08); border: 1px solid rgba(232,200,140,.35); border-radius: 999px; padding: .55rem 1.1rem; color: #eef3fa; font-size: .95rem; }
-  .prova span { color: var(--ouro-claro); margin-right: .45rem; }
-  .prova strong { color: var(--ouro-claro); }
-  /* Barra fixa no celular */
-  .barra-cel { display: none; }
-
-  @media (max-width: 860px) {
-    .hero-grid, .promessa, .video-grid { grid-template-columns: 1fr; }
-    .hero-grid { text-align: center; gap: 24px; margin-top: 36px; }
-    .hero p.lead { margin-inline: auto; }
-    .capas { height: 330px; max-width: 420px; width: 100%; margin: 10px auto 0; }
-    .itens { grid-template-columns: 1fr 1fr; }
-    .meses { grid-template-columns: 1fr 1fr; }
-    .para { grid-template-columns: 1fr; }
-    .promessa .pagina-img { max-width: 360px; margin: 0 auto; }
-    .barra-cel { display: block; position: fixed; left: 0; right: 0; bottom: 0; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.96); box-shadow: 0 -6px 20px rgba(0,0,0,.12); z-index: 10; }
-    .barra-cel .btn { width: 100%; padding: .9rem; }
-    footer { padding-bottom: 96px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .rv { opacity: 1; transform: none; }
   }
-  @media (max-width: 520px) {
-    .itens { grid-template-columns: 1fr; }
-    .topo a { display: none; }
-    .capas { height: 270px; }
-    .natal { flex-direction: column; text-align: center; }
+
+  /* ---------- Telas maiores ---------- */
+  @media (min-width: 860px) {
+    section { padding: 84px 0; }
+    h2 { font-size: 2.7rem; }
+    .hero { padding: 26px 0 70px; }
+    .hero h1 { font-size: 3.8rem; }
+    .hero .lead { font-size: 1.15rem; }
+    .capas { height: 380px; width: 440px; }
+    .capas img { width: 220px; left: 110px; }
+    .capas img:nth-child(1) { transform: translateX(-100px) rotate(-14deg); }
+    .capas img:nth-child(2) { transform: translateX(-48px) rotate(-6deg); }
+    .capas img:nth-child(3) { transform: translateX(92px) rotate(12deg); }
+    .capas img:nth-child(4) { width: 236px; left: 102px; }
+    .dores { grid-template-columns: repeat(3, 1fr); }
+    .grade { grid-template-columns: repeat(3, 1fr); }
+    .trilho { padding-inline: calc((100% - 280px) / 2); }
+    .slide { width: 280px; }
+    .barra { left: 50%; right: auto; width: 520px; bottom: 16px; border-radius: 18px; transform: translate(-50%, 140%); }
+    .barra.on { transform: translate(-50%, 0); }
   }
 </style>
 </head>
 <body>
 
 <!-- ============ TOPO ============ -->
-<header class="hero">
+<header class="hero" id="topo">
   <div class="container">
-    <nav class="topo">
-      <div class="marca">Um Ano com <em>Maria</em></div>
-      <a href="#oferta">Quero o meu →</a>
-    </nav>
-    <div class="hero-grid">
-      <div>
-        <span class="selo">Devocional diário · 366 dias</span>
-        <h1>Um encontro com <em>Maria</em> todos os dias do ano</h1>
-        <p class="lead">Uma página para cada dia, com Palavra de Deus, frase do dia, oração e reflexão. Cinco minutos que transformam a sua rotina em um caminho de fé ao lado de Nossa Senhora.</p>
-        <a class="btn" href="#oferta">Quero começar minha caminhada</a>
-        <p class="seguro">📱 Leia todos os dias pelo celular · Por apenas R$ 59,90</p>
-        <p class="prova"><span>✦</span> Mais de <strong>20 mil pessoas</strong> já rezam com nossos devocionais</p>
-      </div>
-      <div class="capas" aria-hidden="true">
-        <img src="img/capa-novembro.jpg" alt="">
-        <img src="img/capa-fevereiro.jpg" alt="">
-        <img src="img/capa-dezembro.jpg" alt="">
-        <img src="img/capa-janeiro.jpg" alt="Capa do devocional Um Ano com Maria">
-      </div>
+    <div class="marca">Um Ano com <em>Maria</em></div>
+
+    <div class="prova"><span class="pontos"><i></i><i></i><i></i></span><span>Mais de <b><span id="contador">20.000</span> pessoas</b> já rezam com nossos devocionais</span></div>
+
+    <h1>Reze todos os dias com <em>Maria</em> em apenas 5 minutos</h1>
+    <p class="lead">Uma página para cada dia do ano, direto no seu celular: Palavra de Deus, frase do dia, oração e uma reflexão que cabe na sua rotina.</p>
+
+    <div class="capas" aria-hidden="true">
+      <img src="img/capa-novembro.jpg" alt="">
+      <img src="img/capa-fevereiro.jpg" alt="">
+      <img src="img/capa-dezembro.jpg" alt="">
+      <img src="img/capa-janeiro.jpg" alt="">
+    </div>
+
+    <div class="cta">
+      <div class="preco-topo"><b>R$ 59,90</b><small>· menos de R$ 0,17 por dia</small></div>
+      <a class="btn js-comprar" href="#oferta">Quero o meu devocional</a>
+      <p class="mini">📱 Leia pelo celular · Pagamento único</p>
     </div>
   </div>
 </header>
 
-<div class="faixa">
-  <ul class="container">
-    <li>366 páginas diárias</li>
-    <li>Leia pelo celular</li>
-    <li>Oração a Maria em cada dia</li>
-    <li>Espaço para anotações</li>
-    <li>Comece em qualquer mês</li>
-  </ul>
-</div>
-
-<!-- ============ PROMESSA ============ -->
-<section>
-  <div class="container promessa">
-    <img class="pagina-img" src="img/pagina-janeiro.jpg" alt="Exemplo de página do dia 2 de janeiro" loading="lazy">
-    <div>
-      <div class="rotulo">Por que este livro</div>
-      <h2>A fé cresce no ritmo dos pequenos encontros</h2>
-      <p>No meio da correria, é fácil deixar a oração para depois. Este devocional diário foi pensado para caber no seu dia: uma página curta, para ler pela manhã ou antes de dormir, que leva você a olhar a vida com os olhos de Maria.</p>
-      <p>Ao longo do ano, você acompanha os passos de Nossa Senhora no Evangelho: o anúncio do anjo, a visita a Isabel, as bodas de Caná, a cruz e o Natal. E aprende com ela a confiar, servir e guardar tudo no coração.</p>
-      <blockquote>“Deus não procura lugares importantes; procura corações abertos.”</blockquote>
-    </div>
-  </div>
-</section>
-
-<!-- ============ O QUE TEM EM CADA PÁGINA ============ -->
-<section class="bg-claro">
+<!-- ============ DOR → SOLUÇÃO ============ -->
+<section class="dor">
   <div class="container">
-    <div class="centro">
-      <div class="rotulo">Em cada página</div>
-      <h2>Tudo o que você precisa para rezar o dia</h2>
-      <p class="sub">Cada um dos 366 dias segue a mesma estrutura simples, para você criar o hábito sem esforço.</p>
+    <div class="centro rv">
+      <div class="rotulo">Você se identifica?</div>
+      <h2>Você quer rezar todos os dias, <em>mas…</em></h2>
     </div>
-    <div class="itens">
-      <div class="item"><div class="ic">📖</div><h3>Palavra</h3><p>Um versículo do Evangelho ou da Bíblia para iluminar o dia.</p></div>
-      <div class="item"><div class="ic">✦</div><h3>Frase do dia</h3><p>Uma ideia curta e marcante para levar com você e compartilhar.</p></div>
-      <div class="item"><div class="ic">🙏</div><h3>Oração</h3><p>Um pedido simples, confiado à intercessão de Nossa Senhora.</p></div>
-      <div class="item"><div class="ic">💭</div><h3>Reflexão</h3><p>Uma meditação curta, para ler devagar e aplicar na vida real.</p></div>
-      <div class="item"><div class="ic">🕊️</div><h3>Pensamento</h3><p>Uma frase para lembrar ao longo do dia, nos momentos difíceis.</p></div>
-      <div class="item"><div class="ic">✍️</div><h3>Minhas anotações</h3><p>Linhas para escrever o que tocou o seu coração. Seu diário de fé.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ MESES ============ -->
-<section>
-  <div class="container">
-    <div class="centro">
-      <div class="rotulo">Um tema para cada mês</div>
-      <h2>Doze capítulos, doze caminhos com Maria</h2>
-      <p class="sub">Cada mês tem cor, tema e abertura próprios, acompanhando o calendário da fé: Quaresma, Páscoa, os santos, o Advento e o Natal.</p>
-    </div>
-    <div class="meses">
-      <div class="mes"><img src="img/capa-janeiro.jpg" alt="Capa de Janeiro" loading="lazy"><p>Janeiro<small>O sim de Maria</small></p></div>
-      <div class="mes"><img src="img/capa-fevereiro.jpg" alt="Capa de Fevereiro" loading="lazy"><p>Fevereiro<small>Aprendendo a confiar</small></p></div>
-      <div class="mes"><img src="img/capa-novembro.jpg" alt="Capa de Novembro" loading="lazy"><p>Novembro<small>Fazei tudo o que Ele vos disser</small></p></div>
-      <div class="mes"><img src="img/capa-dezembro.jpg" alt="Capa de Dezembro" loading="lazy"><p>Dezembro<small>Esperando com Maria</small></p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ VÍDEO ============ -->
-<section class="video-sec">
-  <div class="container video-grid">
-    <video src="img/motion-novembro.mp4" poster="img/capa-novembro.jpg" autoplay muted loop playsinline preload="metadata"></video>
-    <div>
-      <div class="rotulo">Veja por dentro</div>
-      <h2>Bonito para ler, fácil de rezar</h2>
-      <p class="sub" style="margin-left:0">Páginas com diagramação cuidadosa, letras confortáveis e muito espaço para respirar. Leia no celular, no tablet ou imprima e monte o seu próprio livro de cabeceira.</p>
-      <div class="natal">
-        <img src="img/pagina-dezembro.jpg" alt="Página de 18 de dezembro com contagem regressiva para o Natal" loading="lazy">
-        <p>Em dezembro, uma <strong>contagem regressiva para o Natal</strong> prepara o seu coração dia a dia até a chegada de Jesus.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PARA QUEM É ============ -->
-<section class="bg-creme">
-  <div class="container">
-    <div class="centro">
-      <div class="rotulo">Para quem é</div>
-      <h2>Este devocional é para você que…</h2>
-    </div>
-    <ul class="para">
-      <li>Quer criar o hábito da oração diária, mas não sabe por onde começar.</li>
-      <li>Tem devoção a Nossa Senhora e deseja conhecê-la mais pelo Evangelho.</li>
-      <li>Vive uma rotina corrida e precisa de algo curto e profundo.</li>
-      <li>Procura um presente de fé significativo para mãe, avó, madrinha ou amigos.</li>
-      <li>Gosta de escrever e guardar o que Deus fala ao seu coração.</li>
-      <li>Participa de grupos de oração e quer um roteiro para partilhar.</li>
+    <ul class="dores">
+      <li class="rv"><span>⏰</span>A correria engole o seu tempo e a oração sempre fica para depois.</li>
+      <li class="rv"><span>📿</span>Você começa novenas e devocionais, mas não consegue continuar.</li>
+      <li class="rv"><span>💭</span>Sente falta de paz e de um momento só seu com Deus.</li>
     </ul>
+    <p class="virada rv">O <em>Um Ano com Maria</em> transforma 5 minutos do seu dia em um encontro com Nossa Senhora.</p>
+    <div class="chips rv"><span>⏱ 5 min por dia</span><span>📱 No celular</span><span>📅 366 dias</span><span>🙏 Oração diária</span></div>
   </div>
 </section>
+
+<!-- ============ POR DENTRO (carrossel) ============ -->
+<section class="por-dentro">
+  <div class="container centro rv">
+    <div class="rotulo">Veja por dentro</div>
+    <h2>Uma página linda para <em>cada dia</em></h2>
+    <p class="sub">Cada mês tem cor e tema próprios. Deslize para ver.</p>
+  </div>
+  <div class="trilho" id="trilho">
+    <div class="slide"><img src="img/pagina-janeiro.jpg" alt="Página de 2 de janeiro" loading="lazy"><p>Janeiro · O sim de Maria</p></div>
+    <div class="slide"><img src="img/pagina-fevereiro.jpg" alt="Página de 1º de fevereiro" loading="lazy"><p>Fevereiro · Aprendendo a confiar</p></div>
+    <div class="slide"><video src="img/motion-novembro.mp4" poster="img/capa-novembro.jpg" muted loop playsinline preload="none"></video><p>Novembro em movimento</p></div>
+    <div class="slide"><img src="img/pagina-novembro.jpg" alt="Página de 7 de novembro" loading="lazy"><p>Novembro · Fazei tudo o que Ele vos disser</p></div>
+    <div class="slide"><img src="img/pagina-dezembro.jpg" alt="Página de 18 de dezembro" loading="lazy"><p>Dezembro · Contagem para o Natal</p></div>
+  </div>
+  <div class="bolinhas" id="bolinhas"></div>
+  <p class="arraste">← deslize para o lado →</p>
+</section>
+
+<!-- ============ EM CADA DIA ============ -->
+<section>
+  <div class="container">
+    <div class="centro rv">
+      <div class="rotulo">Em cada dia você recebe</div>
+      <h2>Tudo para rezar o dia, <em>sem esforço</em></h2>
+    </div>
+    <div class="grade">
+      <div class="rv"><b>📖</b><strong>Palavra</strong><small>Um versículo para iluminar o dia</small></div>
+      <div class="rv"><b>✦</b><strong>Frase do dia</strong><small>Para levar com você e compartilhar</small></div>
+      <div class="rv"><b>🙏</b><strong>Oração</strong><small>Confiada à intercessão de Maria</small></div>
+      <div class="rv"><b>💭</b><strong>Reflexão</strong><small>Curta, para aplicar na vida real</small></div>
+      <div class="rv"><b>🕊️</b><strong>Pensamento</strong><small>Para lembrar nos momentos difíceis</small></div>
+      <div class="rv"><b>✍️</b><strong>Anotações</strong><small>Seu diário de fé com Maria</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPOIMENTOS ============
+     Seção reservada para os 5 relatos reais de leitores (estilo WhatsApp). -->
 
 <!-- ============ OFERTA ============ -->
-<section id="oferta">
+<section class="oferta-sec" id="oferta">
   <div class="container">
-    <div class="centro">
+    <div class="centro rv">
       <div class="rotulo">Comece hoje</div>
-      <h2>Garanta o seu “Um Ano com Maria”</h2>
+      <h2>Seu ano inteiro <em>com Maria</em></h2>
     </div>
-    <div class="oferta">
+    <div class="oferta rv">
+      <span class="fita">Devocional diário completo</span>
+      <img src="img/capa-janeiro.jpg" alt="Capa do devocional Um Ano com Maria" loading="lazy">
       <ul>
-        <li>Devocional diário completo, com 366 páginas</li>
-        <li>Livro digital para ler no celular, em poucos minutos por dia</li>
-        <li>12 meses com capa, tema e abertura próprios</li>
+        <li>366 páginas, uma para cada dia do ano</li>
+        <li>Livro digital para ler no celular</li>
+        <li>12 meses com cor e tema próprios</li>
         <li>Contagem regressiva especial para o Natal</li>
-        <li>Leia todos os dias pelo celular, no tablet ou no computador</li>
-        <li>Se preferir, imprima e monte seu livro de cabeceira</li>
-        <li>Comece em qualquer dia do ano</li>
+        <li>Comece hoje, em qualquer dia do ano</li>
       </ul>
-      <!-- EDITAR: preço e link de compra -->
-      <div class="preco">R$ 59,90</div>
-      <p class="preco-obs">Leia todos os dias pelo celular, onde estiver</p>
-      <a class="btn btn-azul" href="#oferta" id="comprar">Quero o meu devocional</a>
-      <p class="seguro">Pagamento único · Leitura pelo celular</p>
+      <div class="valor">
+        <div class="de">Tudo isso por</div>
+        <div class="por">R$ 59,90</div>
+        <div class="dia">Menos de R$ 0,17 por dia</div>
+      </div>
+      <a class="btn btn-azul js-comprar" href="#oferta">Quero o meu devocional</a>
+      <p class="mini">Pagamento único · Leia pelo celular</p>
     </div>
   </div>
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="bg-claro">
+<section class="rv" style="padding-top:20px">
   <div class="container">
-    <div class="centro">
-      <div class="rotulo">Dúvidas</div>
-      <h2>Perguntas frequentes</h2>
-    </div>
+    <h2 class="centro" style="font-size:1.8rem">Dúvidas frequentes</h2>
     <div class="faq">
-      <details><summary>Em que formato recebo o devocional?</summary><p>Você recebe um livro digital em PDF, que abre em qualquer celular, tablet ou computador.</p></details>
-      <details><summary>Consigo ler pelo celular?</summary><p>Sim! O devocional foi pensado para ser lido no celular, todos os dias, em poucos minutos: no ônibus, na fila, no intervalo do trabalho ou antes de dormir. Basta abrir a página do dia.</p></details>
-      <details><summary>Posso imprimir?</summary><p>Sim. As páginas estão no tamanho A5, ideal para imprimir e encadernar como um livro de cabeceira, com espaço para escrever nas anotações.</p></details>
-      <details><summary>Preciso começar em 1º de janeiro?</summary><p>Não. Cada página corresponde a um dia do calendário, então você começa no dia de hoje e segue em frente. Ao chegar a dezembro, é só continuar em janeiro.</p></details>
-      <details><summary>Quanto tempo leva a leitura de cada dia?</summary><p>Cerca de cinco minutos. É uma leitura curta, pensada para caber na rotina, pela manhã ou antes de dormir.</p></details>
-      <details><summary>O conteúdo é católico?</summary><p>Sim. É um devocional mariano, com textos bíblicos, orações a Nossa Senhora e as principais festas do calendário da Igreja.</p></details>
-      <details><summary>Serve como presente?</summary><p>Serve, e é um presente muito especial para quem tem devoção a Maria. Você pode enviar o arquivo ou imprimir e entregar como livro.</p></details>
+      <details><summary>Consigo ler pelo celular?</summary><p>Sim! Ele foi pensado para o celular: abra a página do dia e leia em poucos minutos, no ônibus, no intervalo ou antes de dormir.</p></details>
+      <details><summary>Como recebo o devocional?</summary><p>Você recebe um livro digital em PDF, que abre em qualquer celular, tablet ou computador. Se quiser, também pode imprimir.</p></details>
+      <details><summary>Preciso começar em 1º de janeiro?</summary><p>Não. Cada página corresponde a um dia do calendário: comece pela página de hoje e siga em frente.</p></details>
+      <details><summary>É católico?</summary><p>Sim. É um devocional mariano, com textos bíblicos, orações a Nossa Senhora e as festas do calendário da Igreja.</p></details>
     </div>
   </div>
 </section>
 
-<!-- ============ FINAL ============ -->
-<section class="final">
-  <div class="container">
-    <h2>Deixe Maria caminhar <em>com você</em> neste ano</h2>
-    <p>Uma página por dia. Um passo de fé de cada vez. Junte-se às mais de 20 mil pessoas que já rezam com nossos devocionais.</p>
-    <a class="btn" href="#oferta">Quero o meu devocional</a>
-  </div>
-</section>
+<footer>© <span id="ano"></span> Um Ano com Maria · Todos os direitos reservados</footer>
 
-<footer>
-  © <span id="ano"></span> Um Ano com Maria · Todos os direitos reservados
-</footer>
+<!-- Barra fixa de compra -->
+<div class="barra" id="barra">
+  <div class="p"><small>Ano inteiro por</small><b>R$ 59,90</b></div>
+  <a class="btn btn-azul js-comprar" href="#oferta">Quero o meu</a>
+</div>
 
-<div class="barra-cel"><a class="btn btn-azul" href="#oferta">Quero o meu devocional</a></div>
+<script>
+  // ===== Link de compra: troque "#oferta" pelo link da Hotmart/Kiwify quando tiver =====
+  const LINK_COMPRA = "#oferta";
+  if (LINK_COMPRA !== "#oferta") document.querySelectorAll(".js-comprar").forEach(a => { a.href = LINK_COMPRA; });
 
-<script>document.getElementById("ano").textContent = new Date().getFullYear();</script>
+  document.getElementById("ano").textContent = new Date().getFullYear();
+  const reduzir = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Animação de entrada ao rolar
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
+  }), { threshold: .15 });
+  document.querySelectorAll(".rv").forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + "ms"; io.observe(el); });
+
+  // Contador de leitores
+  const cont = document.getElementById("contador");
+  if (!reduzir) {
+    const alvo = 20000, dur = 1600, t0 = performance.now();
+    (function passo(t) {
+      const p = Math.min(Math.max(t - t0, 0) / dur, 1);
+      cont.textContent = Math.round(alvo * (1 - Math.pow(1 - p, 3))).toLocaleString("pt-BR");
+      if (p < 1) requestAnimationFrame(passo);
+    })(t0);
+  }
+
+  // Barra fixa: aparece depois do topo e some quando a oferta está na tela
+  const barra = document.getElementById("barra");
+  let topoVisivel = true, ofertaVisivel = false;
+  const atualiza = () => barra.classList.toggle("on", !topoVisivel && !ofertaVisivel);
+  new IntersectionObserver(([e]) => { topoVisivel = e.isIntersecting; atualiza(); }).observe(document.querySelector(".hero .cta"));
+  new IntersectionObserver(([e]) => { ofertaVisivel = e.isIntersecting; atualiza(); }, { threshold: .25 }).observe(document.querySelector(".oferta"));
+
+  // Carrossel: bolinhas, destaque do slide central e avanço automático
+  const trilho = document.getElementById("trilho"), slides = [...trilho.children], bol = document.getElementById("bolinhas");
+  slides.forEach((s, i) => {
+    const b = document.createElement("button"); b.setAttribute("aria-label", "Ver página " + (i + 1));
+    b.onclick = () => { parado = true; irPara(i); }; bol.appendChild(b);
+  });
+  let atual = 0, parado = false, trilhoVisivel = false, desde = Date.now();
+  function irPara(i) { const s = slides[i]; trilho.scrollTo({ left: s.offsetLeft - (trilho.clientWidth - s.clientWidth) / 2, behavior: "smooth" }); }
+  function marca() {
+    const meio = trilho.scrollLeft + trilho.clientWidth / 2;
+    let melhor = 0, dist = Infinity;
+    slides.forEach((s, i) => { const d = Math.abs(s.offsetLeft + s.clientWidth / 2 - meio); if (d < dist) { dist = d; melhor = i; } });
+    if (melhor !== atual) desde = Date.now();
+    atual = melhor;
+    slides.forEach((s, i) => {
+      s.classList.toggle("ativo", i === melhor);
+      const v = s.querySelector("video");
+      if (v) { if (i === melhor) v.play().catch(() => {}); else v.pause(); }
+    });
+    [...bol.children].forEach((b, i) => b.classList.toggle("ativo", i === melhor));
+  }
+  trilho.addEventListener("scroll", () => requestAnimationFrame(marca), { passive: true });
+  ["touchstart", "pointerdown", "wheel"].forEach(ev => trilho.addEventListener(ev, () => { parado = true; }, { passive: true }));
+  new IntersectionObserver(([e]) => { trilhoVisivel = e.isIntersecting; }, { threshold: .4 }).observe(trilho);
+  // Avança sozinho até a pessoa tocar; no vídeo espera mais tempo
+  if (!reduzir) setInterval(() => {
+    if (parado || !trilhoVisivel) return;
+    const espera = slides[atual].querySelector("video") ? 9000 : 3500;
+    if (Date.now() - desde >= espera) irPara((atual + 1) % slides.length);
+  }, 500);
+  marca();
+</script>
 </body>
 </html>
