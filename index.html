@@ -49,11 +49,6 @@
   .marca em { color: var(--ouro-claro); }
   .prova { display: inline-flex; align-items: center; gap: .5rem; margin-top: 18px; background: rgba(255,255,255,.1); border: 1px solid rgba(232,200,140,.4); border-radius: 999px; padding: .45rem .95rem; font-size: .82rem; color: #eef3fa; }
   .prova b { color: var(--ouro-claro); font-weight: 800; }
-  .pontos { display: inline-flex; flex: none; }
-  .pontos i { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--azul); margin-left: -7px; background: linear-gradient(135deg, #f3dca4, #b8893b); }
-  .pontos i:first-child { margin-left: 0; }
-  .pontos i:nth-child(2) { background: linear-gradient(135deg, #c7303b, #7a1018); }
-  .pontos i:nth-child(3) { background: linear-gradient(135deg, #7a43aa, #3d1a5e); }
   .hero h1 { font-size: 2.55rem; margin: 18px 0 12px; }
   .hero h1 em { color: var(--ouro-claro); }
   .hero .lead { font-size: 1.02rem; color: #d6e1f1; max-width: 520px; margin: 0 auto; }
@@ -118,8 +113,10 @@
   .comunidade { max-width: 420px; margin: 30px auto 0; text-align: center; background: radial-gradient(ellipse at 50% 0%, #2a64ad, var(--azul-esc)); color: #fff; border-radius: 22px; padding: 26px 20px 24px; box-shadow: 0 20px 50px rgba(18,48,90,.25); position: relative; overflow: hidden; }
   .comunidade::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(232,200,140,.6) 1px, transparent 1.6px); background-size: 30px 30px; opacity: .18; }
   .comunidade > * { position: relative; }
-  .pontos-grandes i { width: 34px; height: 34px; margin-left: -10px; border-color: var(--azul-esc); }
-  .pontos-grandes i:nth-child(4) { background: linear-gradient(135deg, #e2782f, #8a3a0c); }
+  .livro-ic { display: inline-grid; place-items: center; width: 74px; height: 74px; border-radius: 50%; background: rgba(232,200,140,.14); border: 1px solid rgba(232,200,140,.45); color: var(--ouro-claro); }
+  .livro-ic .livro { width: 46px; height: 35px; }
+  .livro-mini { display: inline-flex; color: var(--ouro-claro); }
+  .livro-mini .livro { width: 22px; height: 17px; }
   .comunidade .num { font-family: var(--serif); font-size: 3.6rem; font-weight: 600; line-height: 1; color: var(--ouro-claro); margin-top: 12px; }
   .comunidade p { font-family: var(--serif); font-size: 1.45rem; line-height: 1.2; margin-top: 4px; }
   .comunidade p em { color: var(--ouro-claro); }
@@ -198,7 +195,7 @@
   <div class="container">
     <div class="marca">Um Ano com <em>Maria</em></div>
 
-    <div class="prova"><span class="pontos"><i></i><i></i><i></i></span><span>Mais de <b><span id="contador">20.000</span> pessoas</b> já rezam com nossos devocionais</span></div>
+    <div class="prova"><span class="livro-mini"><svg class="livro" viewBox="0 0 64 48" aria-hidden="true"><path d="M32 10C24 4 13 3 4 6v34c9-3 20-2 28 4 8-6 19-7 28-4V6c-9-3-20-2-28 4z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M32 10v34" stroke="currentColor" stroke-width="2.6"/><path d="M10 14c5-1 11-.5 16 2M10 21c5-1 11-.5 16 2M10 28c5-1 11-.5 16 2M38 16c5-2.5 11-3 16-2M38 23c5-2.5 11-3 16-2M38 30c5-2.5 11-3 16-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/></svg></span><span>Mais de <b><span id="contador">20.000</span> pessoas</b> já rezam com nossos devocionais</span></div>
 
     <h1>Reze todos os dias com <em>Maria</em> em apenas 5 minutos</h1>
     <p class="lead">Uma página para cada dia do ano, direto no seu celular: Palavra de Deus, frase do dia, oração e uma reflexão que cabe na sua rotina.</p>
@@ -310,7 +307,7 @@
   <p class="arraste arraste-escuro">← deslize para ler mais →</p>
   <div class="container">
     <div class="comunidade rv">
-      <span class="pontos pontos-grandes"><i></i><i></i><i></i><i></i></span>
+      <span class="livro-ic"><svg class="livro" viewBox="0 0 64 48" aria-hidden="true"><path d="M32 10C24 4 13 3 4 6v34c9-3 20-2 28 4 8-6 19-7 28-4V6c-9-3-20-2-28 4z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M32 10v34" stroke="currentColor" stroke-width="2.6"/><path d="M10 14c5-1 11-.5 16 2M10 21c5-1 11-.5 16 2M10 28c5-1 11-.5 16 2M38 16c5-2.5 11-3 16-2M38 23c5-2.5 11-3 16-2M38 30c5-2.5 11-3 16-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/></svg></span>
       <div class="num">+<span id="contador2">20.000</span></div>
       <p>pessoas já rezam com <em>nossos devocionais</em></p>
       <small>Faça parte dessa família de fé</small>
