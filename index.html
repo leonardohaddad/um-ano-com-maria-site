@@ -107,7 +107,12 @@
 
   /* ---------- Depoimentos (estilo WhatsApp) ---------- */
   .depo { background: var(--azul-claro); }
-  .zap { max-width: 420px; margin: 24px auto 0; border-radius: 22px; overflow: hidden; box-shadow: 0 24px 60px rgba(18,48,90,.2); background: #efe7dd; }
+  .trilho-depo { align-items: stretch; padding: 24px calc((100% - 290px) / 2) 14px; }
+  .zap { width: 290px; border-radius: 20px; overflow: hidden; box-shadow: 0 18px 40px rgba(18,48,90,.18); background: #efe7dd; display: flex; flex-direction: column; }
+  .zap .zap-corpo { flex: 1; }
+  .bolinhas-claras button { background: rgba(18,48,90,.2); }
+  .bolinhas-claras button.ativo { background: var(--ouro); }
+  .arraste-escuro { color: var(--cinza); }
   .zap-topo { display: flex; align-items: center; gap: 10px; background: #075e54; color: #fff; padding: 12px 14px; }
   .zap-topo strong { display: block; font-size: .95rem; }
   .zap-topo small { font-size: .75rem; opacity: .8; }
@@ -268,25 +273,31 @@
       <div class="rotulo">Quem já reza com a gente</div>
       <h2>O que dizem os leitores dos <em>nossos devocionais</em></h2>
     </div>
-    <div class="zap rv">
-      <div class="zap-topo">
-        <span class="zap-av">✦</span>
-        <div><strong>Mensagens de leitores</strong><small>Um Ano com Maria</small></div>
-      </div>
-      <div class="zap-corpo">
-        <div class="zap-data">08/09/2026</div>
-        <div class="balao rv"><b style="color:#c2185b">Mariana Alves</b>Comecei a ler em setembro e virou meu momento favorito da manhã. As reflexões são simples, mas me fazem pensar e conversar com Deus com mais calma.</div>
-        <div class="zap-data">19/09/2026</div>
-        <div class="balao rv"><b style="color:#1e88e5">Juliana Martins</b>Eu tinha dificuldade de manter uma rotina de oração. Esse devocional me ajudou a reservar alguns minutos do dia para a minha fé. Amei a leitura!</div>
-        <div class="zap-data">28/09/2026</div>
-        <div class="balao rv"><b style="color:#2e7d32">Ricardo Oliveira</b>Gostei muito de como as mensagens se conectam com situações do dia a dia. Terminei setembro com várias páginas marcadas para reler.</div>
-        <div class="zap-data">07/10/2026</div>
-        <div class="balao rv"><b style="color:#8e24aa">Fernanda Costa</b>Comecei em outubro e já estou lendo com minha mãe. Depois de cada leitura, a gente conversa sobre a mensagem. Virou um momento muito especial para nós!</div>
-        <div class="zap-data">18/10/2026</div>
-        <div class="balao rv"><b style="color:#ef6c00">Camila Ribeiro</b>É uma leitura acolhedora, daquelas que dá vontade de continuar. Tenho lido antes de dormir e adoro terminar o dia com uma reflexão sobre a Palavra.</div>
-      </div>
+  </div>
+  <div class="trilho trilho-depo" id="trilho-depo">
+    <div class="slide zap">
+      <div class="zap-topo"><span class="zap-av" style="background:#c2185b">M</span><div><strong>Mariana Alves</strong><small>Leitora</small></div></div>
+      <div class="zap-corpo"><div class="zap-data">08/09/2026</div><div class="balao">Comecei a ler em setembro e virou meu momento favorito da manhã. As reflexões são simples, mas me fazem pensar e conversar com Deus com mais calma.</div></div>
+    </div>
+    <div class="slide zap">
+      <div class="zap-topo"><span class="zap-av" style="background:#1e88e5">J</span><div><strong>Juliana Martins</strong><small>Leitora</small></div></div>
+      <div class="zap-corpo"><div class="zap-data">19/09/2026</div><div class="balao">Eu tinha dificuldade de manter uma rotina de oração. Esse devocional me ajudou a reservar alguns minutos do dia para a minha fé. Amei a leitura!</div></div>
+    </div>
+    <div class="slide zap">
+      <div class="zap-topo"><span class="zap-av" style="background:#2e7d32">R</span><div><strong>Ricardo Oliveira</strong><small>Leitor</small></div></div>
+      <div class="zap-corpo"><div class="zap-data">28/09/2026</div><div class="balao">Gostei muito de como as mensagens se conectam com situações do dia a dia. Terminei setembro com várias páginas marcadas para reler.</div></div>
+    </div>
+    <div class="slide zap">
+      <div class="zap-topo"><span class="zap-av" style="background:#8e24aa">F</span><div><strong>Fernanda Costa</strong><small>Leitora</small></div></div>
+      <div class="zap-corpo"><div class="zap-data">07/10/2026</div><div class="balao">Comecei em outubro e já estou lendo com minha mãe. Depois de cada leitura, a gente conversa sobre a mensagem. Virou um momento muito especial para nós!</div></div>
+    </div>
+    <div class="slide zap">
+      <div class="zap-topo"><span class="zap-av" style="background:#ef6c00">C</span><div><strong>Camila Ribeiro</strong><small>Leitora</small></div></div>
+      <div class="zap-corpo"><div class="zap-data">18/10/2026</div><div class="balao">É uma leitura acolhedora, daquelas que dá vontade de continuar. Tenho lido antes de dormir e adoro terminar o dia com uma reflexão sobre a Palavra.</div></div>
     </div>
   </div>
+  <div class="bolinhas bolinhas-claras" id="bolinhas-depo"></div>
+  <p class="arraste arraste-escuro">← deslize para ver mais →</p>
 </section>
 
 <!-- ============ OFERTA ============ -->
@@ -371,36 +382,40 @@
   new IntersectionObserver(([e]) => { ofertaVisivel = e.isIntersecting; atualiza(); }, { threshold: .25 }).observe(document.querySelector(".oferta"));
 
   // Carrossel: bolinhas, destaque do slide central e avanço automático
-  const trilho = document.getElementById("trilho"), slides = [...trilho.children], bol = document.getElementById("bolinhas");
-  slides.forEach((s, i) => {
-    const b = document.createElement("button"); b.setAttribute("aria-label", "Ver página " + (i + 1));
-    b.onclick = () => { parado = true; irPara(i); }; bol.appendChild(b);
-  });
-  let atual = 0, parado = false, trilhoVisivel = false, desde = Date.now();
-  function irPara(i) { const s = slides[i]; trilho.scrollTo({ left: s.offsetLeft - (trilho.clientWidth - s.clientWidth) / 2, behavior: "smooth" }); }
-  function marca() {
-    const meio = trilho.scrollLeft + trilho.clientWidth / 2;
-    let melhor = 0, dist = Infinity;
-    slides.forEach((s, i) => { const d = Math.abs(s.offsetLeft + s.clientWidth / 2 - meio); if (d < dist) { dist = d; melhor = i; } });
-    if (melhor !== atual) desde = Date.now();
-    atual = melhor;
+  function carrossel(trilho, bol, intervalo) {
+    const slides = [...trilho.children];
+    let atual = 0, parado = false, visivel = false, desde = Date.now();
     slides.forEach((s, i) => {
-      s.classList.toggle("ativo", i === melhor);
-      const v = s.querySelector("video");
-      if (v) { if (i === melhor) v.play().catch(() => {}); else v.pause(); }
+      const b = document.createElement("button"); b.setAttribute("aria-label", "Ver item " + (i + 1));
+      b.onclick = () => { parado = true; irPara(i); }; bol.appendChild(b);
     });
-    [...bol.children].forEach((b, i) => b.classList.toggle("ativo", i === melhor));
+    function irPara(i) { const s = slides[i]; trilho.scrollTo({ left: s.offsetLeft - (trilho.clientWidth - s.clientWidth) / 2, behavior: "smooth" }); }
+    function marca() {
+      const meio = trilho.scrollLeft + trilho.clientWidth / 2;
+      let melhor = 0, dist = Infinity;
+      slides.forEach((s, i) => { const d = Math.abs(s.offsetLeft + s.clientWidth / 2 - meio); if (d < dist) { dist = d; melhor = i; } });
+      if (melhor !== atual) desde = Date.now();
+      atual = melhor;
+      slides.forEach((s, i) => {
+        s.classList.toggle("ativo", i === melhor);
+        const v = s.querySelector("video");
+        if (v) { if (i === melhor) v.play().catch(() => {}); else v.pause(); }
+      });
+      [...bol.children].forEach((b, i) => b.classList.toggle("ativo", i === melhor));
+    }
+    trilho.addEventListener("scroll", () => requestAnimationFrame(marca), { passive: true });
+    ["touchstart", "pointerdown", "wheel"].forEach(ev => trilho.addEventListener(ev, () => { parado = true; }, { passive: true }));
+    new IntersectionObserver(([e]) => { visivel = e.isIntersecting; }, { threshold: .4 }).observe(trilho);
+    // Avança sozinho até a pessoa tocar; no vídeo espera mais tempo
+    if (!reduzir) setInterval(() => {
+      if (parado || !visivel) return;
+      const espera = slides[atual].querySelector("video") ? 9000 : intervalo;
+      if (Date.now() - desde >= espera) irPara((atual + 1) % slides.length);
+    }, 500);
+    marca();
   }
-  trilho.addEventListener("scroll", () => requestAnimationFrame(marca), { passive: true });
-  ["touchstart", "pointerdown", "wheel"].forEach(ev => trilho.addEventListener(ev, () => { parado = true; }, { passive: true }));
-  new IntersectionObserver(([e]) => { trilhoVisivel = e.isIntersecting; }, { threshold: .4 }).observe(trilho);
-  // Avança sozinho até a pessoa tocar; no vídeo espera mais tempo
-  if (!reduzir) setInterval(() => {
-    if (parado || !trilhoVisivel) return;
-    const espera = slides[atual].querySelector("video") ? 9000 : 3500;
-    if (Date.now() - desde >= espera) irPara((atual + 1) % slides.length);
-  }, 500);
-  marca();
+  carrossel(document.getElementById("trilho"), document.getElementById("bolinhas"), 3500);
+  carrossel(document.getElementById("trilho-depo"), document.getElementById("bolinhas-depo"), 5000);
 </script>
 </body>
 </html>
