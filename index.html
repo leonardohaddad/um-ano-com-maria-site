@@ -65,6 +65,20 @@
   .preco-topo b { font-family: var(--serif); font-size: 2rem; color: #fff; }
   .preco-topo small { color: var(--ouro-claro); font-size: .82rem; font-weight: 600; }
 
+  /* ---------- Selo dourado ---------- */
+  .selo { display: block; filter: drop-shadow(0 6px 14px rgba(0,0,0,.35)); }
+  .selo-capa { position: absolute; z-index: 3; width: 92px; height: 92px; right: 0; top: -10px; animation: selo-gira 7s ease-in-out infinite; }
+  @keyframes selo-gira { 0%, 100% { transform: rotate(10deg) scale(1); } 50% { transform: rotate(16deg) scale(1.05); } }
+
+  /* ---------- Autoridade (2º bloco) ---------- */
+  .autoridade { background: linear-gradient(180deg, #fffaf0, var(--creme)); border-bottom: 1px solid #efe2c4; padding: 18px 0 16px; }
+  .aut-linha { display: flex; align-items: center; gap: 14px; max-width: 520px; margin: 0 auto; }
+  .selo-faixa { width: 66px; height: 66px; flex: none; filter: drop-shadow(0 4px 8px rgba(138,90,28,.3)); }
+  .aut-linha p { font-family: var(--serif); font-size: 1.18rem; line-height: 1.25; color: var(--azul-esc); }
+  .aut-linha b { color: #8a5a1c; }
+  .aut-selos { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
+  .aut-selos span { background: #fff; border: 1px solid #e8d3a6; color: var(--azul-esc); font-size: .78rem; font-weight: 600; padding: .42rem .75rem; border-radius: 999px; white-space: nowrap; }
+
   /* ---------- Dor ---------- */
   .dor { background: var(--creme); }
   .dores { display: grid; gap: 12px; margin-top: 22px; }
@@ -186,6 +200,7 @@
     .capas img:nth-child(2) { transform: translateX(-48px) rotate(-6deg); }
     .capas img:nth-child(3) { transform: translateX(92px) rotate(12deg); }
     .capas img:nth-child(4) { width: 236px; left: 102px; }
+    .selo-capa { width: 120px; height: 120px; right: 10px; }
     .dores { grid-template-columns: repeat(3, 1fr); }
     .grade { grid-template-columns: repeat(3, 1fr); }
     .trilho { padding-inline: calc((100% - 280px) / 2); }
@@ -196,6 +211,27 @@
 </style>
 </head>
 <body>
+
+<!-- Selo dourado "Edição Premium · +20 mil leitores" (reutilizado com <use href="#selo">) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="ouro-selo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbeab8"/><stop offset=".45" stop-color="#e2b964"/><stop offset=".7" stop-color="#c8963f"/><stop offset="1" stop-color="#f3d58e"/>
+    </linearGradient>
+    <linearGradient id="ouro-miolo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff6dc"/><stop offset="1" stop-color="#f1d590"/>
+    </linearGradient>
+    <path id="arco-selo" d="M60,22 a38,38 0 1,1 -0.1,0"/>
+  </defs>
+  <symbol id="selo" viewBox="0 0 120 120">
+    <polygon fill="url(#ouro-selo)" points="60.0,1.0 66.9,7.5 75.3,3.0 80.3,11.0 89.5,8.9 92.3,18.0 101.7,18.3 102.0,27.7 111.1,30.5 109.0,39.7 117.0,44.7 112.5,53.1 119.0,60.0 112.5,66.9 117.0,75.3 109.0,80.3 111.1,89.5 102.0,92.3 101.7,101.7 92.3,102.0 89.5,111.1 80.3,109.0 75.3,117.0 66.9,112.5 60.0,119.0 53.1,112.5 44.7,117.0 39.7,109.0 30.5,111.1 27.7,102.0 18.3,101.7 18.0,92.3 8.9,89.5 11.0,80.3 3.0,75.3 7.5,66.9 1.0,60.0 7.5,53.1 3.0,44.7 11.0,39.7 8.9,30.5 18.0,27.7 18.3,18.3 27.7,18.0 30.5,8.9 39.7,11.0 44.7,3.0 53.1,7.5"/>
+    <circle cx="60" cy="60" r="47" fill="url(#ouro-miolo)" stroke="#a87a2c" stroke-width="1.6"/>
+    <circle cx="60" cy="60" r="30" fill="none" stroke="#a87a2c" stroke-width=".8" stroke-dasharray="1.5 2"/>
+    <text font-family="Inter, Arial, sans-serif" font-size="8" font-weight="700" letter-spacing=".6" fill="#12305a"><textPath href="#arco-selo" textLength="232">EDIÇÃO PREMIUM ✦ EDIÇÃO PREMIUM ✦</textPath></text>
+    <text x="60" y="64" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="19" font-weight="700" fill="#12305a">+20 mil</text>
+    <text x="60" y="75" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="6.6" font-weight="700" letter-spacing="1.2" fill="#8a5a1c">LEITORES</text>
+  </symbol>
+</svg>
 
 <!-- ============ TOPO ============ -->
 <header class="hero" id="topo">
@@ -212,6 +248,7 @@
       <img src="img/capa-fevereiro.jpg" alt="">
       <img src="img/capa-dezembro.jpg" alt="">
       <img src="img/capa-janeiro.jpg" alt="">
+      <svg class="selo selo-capa"><use href="#selo"/></svg>
     </div>
 
     <div class="cta">
@@ -221,6 +258,21 @@
     </div>
   </div>
 </header>
+
+<!-- ============ AUTORIDADE ============ -->
+<div class="autoridade">
+  <div class="container">
+    <div class="aut-linha">
+      <svg class="selo selo-faixa" role="img" aria-label="Edição Premium, mais de 20 mil leitores"><use href="#selo"/></svg>
+      <p>Dos mesmos criadores dos devocionais que já reúnem <b>+20 mil leitores</b></p>
+    </div>
+    <div class="aut-selos">
+      <span>📖 366 dias de oração</span>
+      <span>📱 Leia no celular</span>
+      <span>✨ Edição Premium 2026</span>
+    </div>
+  </div>
+</div>
 
 <!-- ============ DOR → SOLUÇÃO ============ -->
 <section class="dor">
