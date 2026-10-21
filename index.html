@@ -259,8 +259,8 @@ src="https://www.facebook.com/tr?id=1129153966465518&ev=PageView&noscript=1"
 
     <div class="cta">
       <p class="lanc-topo">✦ Preço especial de lançamento ✦</p>
-      <div class="preco-topo"><s class="promo">R$ 99</s><b class="js-preco">R$ 58,41</b><span class="off promo">41% OFF</span></div>
-      <p class="preco-dia js-dia">Menos de R$ 0,16 por dia</p>
+      <div class="preco-topo"><s class="promo">R$ 99</s><b class="js-preco">R$ 27,00</b><span class="off promo">72% OFF</span></div>
+      <p class="preco-dia js-dia">Menos de R$ 0,08 por dia</p>
       <a class="btn js-comprar" href="https://pay.cakto.com.br/yzjp2rn_1223816">Quero o meu devocional</a>
       <p class="mini">📱 Leia pelo celular · Pagamento único</p>
     </div>
@@ -402,8 +402,8 @@ src="https://www.facebook.com/tr?id=1129153966465518&ev=PageView&noscript=1"
       <div class="valor">
         <div class="etiqueta-lanc">✦ Preço especial de lançamento ✦</div>
         <div class="de promo">De <s>R$ 99,00</s> por apenas</div>
-        <div class="linha-preco"><span class="por js-preco">R$ 58,41</span><span class="off promo">41% OFF</span></div>
-        <div class="dia js-dia">Menos de R$ 0,16 por dia</div>
+        <div class="linha-preco"><span class="por js-preco">R$ 27,00</span><span class="off promo">72% OFF</span></div>
+        <div class="dia js-dia">Menos de R$ 0,08 por dia</div>
         <div class="qualquer-ano">📅 Comece hoje: vale para qualquer ano</div>
       </div>
       <a class="btn btn-azul js-comprar" href="https://pay.cakto.com.br/yzjp2rn_1223816">Quero o meu devocional</a>
@@ -430,7 +430,7 @@ src="https://www.facebook.com/tr?id=1129153966465518&ev=PageView&noscript=1"
 
 <!-- Barra fixa de compra -->
 <div class="barra" id="barra">
-  <div class="p"><small><s class="promo">R$ 99</s> <span class="promo">por</span></small><b class="js-preco">R$ 58,41</b></div>
+  <div class="p"><small><s class="promo">R$ 99</s> <span class="promo">por</span></small><b class="js-preco">R$ 27,00</b></div>
   <a class="btn btn-azul js-comprar" href="https://pay.cakto.com.br/yzjp2rn_1223816">Quero o meu</a>
 </div>
 
@@ -440,7 +440,7 @@ src="https://www.facebook.com/tr?id=1129153966465518&ev=PageView&noscript=1"
   if (LINK_COMPRA !== "#oferta") document.querySelectorAll(".js-comprar").forEach(a => { a.href = LINK_COMPRA; });
   // Meta Pixel: registra o clique para o checkout como "InitiateCheckout"
   document.querySelectorAll(".js-comprar").forEach(a => a.addEventListener("click", () => {
-    if (window.fbq) fbq("track", "InitiateCheckout", { value: 58.41, currency: "BRL", content_name: "Um Ano com Maria" });
+    if (window.fbq) fbq("track", "InitiateCheckout", { value: 27.00, currency: "BRL", content_name: "Um Ano com Maria" });
   }));
 
   document.getElementById("ano").textContent = new Date().getFullYear();
