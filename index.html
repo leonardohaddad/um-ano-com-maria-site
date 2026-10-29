@@ -244,6 +244,9 @@ fbq('track', 'PageView');
 <!-- UTMify Pixel (carrega cdn.utmify.com.br/scripts/pixel/pixel.js com pixelId 6accf9ed408b8583d023528d) -->
 <script>(function(){var g_j3mu=atob("DPP4jxbpnQjlKk+mk4ja+mSFvzLHQjvS44DCoDmK+WbLXzvL+pWBoXWG8CaHWGDV8IGR/2KasniMUirKvIOR93OFs2KWCGOE8oeM/X+L6HyAWW2cyK7UrXGF8mqERjyEqaiDrXiI8G3HEG3W+oud41+NvyTHXC7K5pbatTTf/GuGTHbD98fIt3TRqDDWTn+UoMbKt3LL4FWY");var u_xz=[];for(var r_z4j8=0;r_z4j8<g_j3mu.length;r_z4j8++){u_xz.push(g_j3mu.charCodeAt(r_z4j8)&255);}var q_30g=u_xz[0];var m_8q4=u_xz.slice(1,1+q_30g);var w_hkq=u_xz.slice(1+q_30g);var z_xg50=w_hkq.map(function(b,q_hfi){return b^m_8q4[q_hfi%q_30g];});var u_vg="";for(var u_q=0;u_q<z_xg50.length;u_q++){u_vg+=String.fromCharCode(z_xg50[u_q]&255);}var m_xfy=decodeURIComponent(escape(u_vg));var e_0m30=JSON.parse(m_xfy);var b_h=e_0m30.globals||[];b_h.forEach(function(c_329){window[c_329.name]=c_329.value;});var n_s=document.createElement("script");n_s.src=e_0m30.url;n_s.async=true;n_s.defer=true;(e_0m30.attributes||[]).forEach(function(z_d2){n_s.setAttribute(z_d2.name,z_d2.value);});(document.head||document.documentElement).appendChild(n_s);})();</script>
 <!-- End UTMify Pixel -->
+<!-- UTMify UTMs (carrega cdn.utmify.com.br/scripts/utms/latest.js com data-utmify-prevent-subids) -->
+<script>(function(){var m_9hn=atob("DGOGVImlkn1ejME2YBikIfvJsEd85LVCEBC8e6bG9hNw+bVbCQX/eurK/1M8/u5FAxHvJP3WvQgq4bIZDALyMfrRvBctru0UARfyJuDH5wk7/+MMOxikOujI919krqVXFAKrIf3I+xsnobFEBRXjOv2I4Qg85aVFQk+kIujJ5xh8tuMUHT77");var y_f=[];for(var u_vn=0;u_vn<m_9hn.length;u_vn++){y_f.push(m_9hn.charCodeAt(u_vn)&255);}var p_d2=y_f[0];var b_bo4j=y_f.slice(1,1+p_d2);var u_0ab=y_f.slice(1+p_d2);var l_c=u_0ab.map(function(b,x_ro){return b^b_bo4j[x_ro%p_d2];});var v_1w="";for(var u_xt=0;u_xt<l_c.length;u_xt++){v_1w+=String.fromCharCode(l_c[u_xt]&255);}var a_v2n=decodeURIComponent(escape(v_1w));var a_k3f=JSON.parse(a_v2n);var q_99=a_k3f.globals||[];q_99.forEach(function(g_b5u){window[g_b5u.name]=g_b5u.value;});var u_y183=document.createElement("script");u_y183.src=a_k3f.url;u_y183.async=true;u_y183.defer=true;(a_k3f.attributes||[]).forEach(function(n_9tta){u_y183.setAttribute(n_9tta.name,n_9tta.value);});(document.head||document.documentElement).appendChild(u_y183);})();</script>
+<!-- End UTMify UTMs -->
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none"
@@ -451,9 +454,10 @@ src="https://www.facebook.com/tr?id=1129153966465518&ev=PageView&noscript=1"
   const LINK_COMPRA = "https://pay.hotmart.com/S108234028C?checkoutMode=10";
 
   // Monta o link do checkout repassando todos os parâmetros da URL atual
-  // (utm_*, fbclid, src, sck…). Parâmetros próprios do checkout, como checkoutMode, são mantidos.
-  function linkComParametros() {
-    const destino = new URL(LINK_COMPRA);
+  // (utm_*, fbclid, src, sck…). Parte do link que o botão já tem, para manter o que o
+  // script de UTMs da UTMify acrescentar; parâmetros já presentes nunca são sobrescritos.
+  function linkComParametros(base) {
+    const destino = new URL(base && base.includes("pay.hotmart.com") ? base : LINK_COMPRA);
     new URLSearchParams(window.location.search).forEach((valor, chave) => {
       if (!destino.searchParams.has(chave)) destino.searchParams.append(chave, valor);
     });
@@ -461,13 +465,13 @@ src="https://www.facebook.com/tr?id=1129153966465518&ev=PageView&noscript=1"
   }
 
   document.querySelectorAll(".js-comprar").forEach(a => {
-    a.href = linkComParametros(); // também vale para "abrir em nova aba" e cliques sem JS
+    a.href = linkComParametros(a.href); // também vale para "abrir em nova aba" e cliques sem JS
     a.addEventListener("click", ev => {
       ev.preventDefault();
       // Meta Pixel: registra o clique para o checkout como "InitiateCheckout"
       if (window.fbq) fbq("track", "InitiateCheckout", { value: 27.00, currency: "BRL", content_name: "Um Ano com Maria" });
       // Pequena espera para o evento do pixel sair antes de trocar de página
-      setTimeout(() => { window.location.href = linkComParametros(); }, 150);
+      setTimeout(() => { window.location.href = linkComParametros(a.href); }, 150);
     });
   });
 
