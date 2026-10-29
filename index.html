@@ -112,12 +112,33 @@
   .bolinhas button.ativo { width: 22px; background: var(--ouro-claro); }
   .arraste { text-align: center; font-size: .78rem; color: #8fa3c3; margin-top: 10px; }
 
-  /* ---------- Em cada dia ---------- */
-  .grade { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
-  .grade div { background: var(--azul-claro); border-radius: 14px; padding: 16px 14px; }
-  .grade b { display: block; font-size: 1.4rem; margin-bottom: 4px; }
-  .grade strong { display: block; color: var(--azul-esc); font-size: .95rem; }
-  .grade small { color: var(--cinza); font-size: .82rem; line-height: 1.4; display: block; margin-top: 2px; }
+  /* ---------- Palavra de hoje (cartão interativo) ---------- */
+  .palavra-sec { background: var(--azul-claro); }
+  .palavra-card { position: relative; max-width: 380px; min-height: 330px; margin: 24px auto 0; border-radius: 22px; overflow: hidden; cursor: pointer; background: radial-gradient(ellipse at 50% 15%, #2a64ad 0%, var(--azul) 45%, var(--azul-esc) 100%); color: #fff; box-shadow: 0 22px 50px rgba(18,48,90,.3); -webkit-tap-highlight-color: transparent; }
+  .palavra-card::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(232,200,140,.6) 1px, transparent 1.6px); background-size: 26px 26px; opacity: .18; }
+  .palavra-card::after { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(232,200,140,.45); border-radius: 16px; pointer-events: none; }
+  .pc-fechado, .pc-aberto { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 26px; transition: opacity .5s ease, transform .5s ease; }
+  .pc-aberto { opacity: 0; transform: translateY(16px); pointer-events: none; }
+  .palavra-card.aberto .pc-fechado { opacity: 0; transform: scale(.9); pointer-events: none; }
+  .palavra-card.aberto .pc-aberto { opacity: 1; transform: none; pointer-events: auto; }
+  .pc-selo { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; font-size: 1.8rem; color: var(--azul-esc); background: radial-gradient(circle at 35% 30%, #fbeab8, #e2b964 55%, #b8893b); box-shadow: 0 0 0 0 rgba(232,200,140,.6); animation: pulso 2.2s infinite; }
+  @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(232,200,140,.55); } 70% { box-shadow: 0 0 0 18px rgba(232,200,140,0); } 100% { box-shadow: 0 0 0 0 rgba(232,200,140,0); } }
+  .pc-convite { margin-top: 18px; font-family: var(--serif); font-size: 1.5rem; line-height: 1.2; }
+  .pc-fechado small { margin-top: 10px; font-size: .78rem; color: #b9c9e2; letter-spacing: .04em; }
+  .pc-origem { font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--ouro-claro); }
+  .pc-frase { margin-top: 12px; font-family: var(--serif); font-size: 1.55rem; line-height: 1.22; font-weight: 600; }
+  .pc-fio { width: 40px; height: 2px; background: var(--ouro-claro); margin: 16px auto 12px; border-radius: 2px; }
+  .pc-rot { font-size: .66rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #b9c9e2; }
+  .pc-oracao { margin-top: 6px; font-family: var(--serif); font-style: italic; font-size: 1.05rem; line-height: 1.4; color: #f3dca4; }
+  .citacao-papa { max-width: 420px; margin: 22px auto 0; text-align: center; padding: 22px 18px 18px; border-top: 1px solid #d9e2ef; border-bottom: 1px solid #d9e2ef; }
+  .cp-aspas { display: block; font-family: var(--serif); font-size: 3.6rem; line-height: .6; height: 26px; color: var(--ouro); }
+  .citacao-papa blockquote { margin-top: 8px; font-family: var(--serif); font-style: italic; font-size: 1.28rem; line-height: 1.38; color: var(--azul-esc); }
+  .citacao-papa figcaption { margin-top: 12px; }
+  .citacao-papa strong { display: block; font-size: .9rem; color: var(--azul-esc); letter-spacing: .02em; }
+  .citacao-papa figcaption span { display: block; font-size: .74rem; color: var(--cinza); margin-top: 2px; }
+  .pc-outra { margin-top: 18px; font: 600 .85rem var(--sans); color: #fff; background: rgba(255,255,255,.12); border: 1px solid rgba(232,200,140,.5); border-radius: 999px; padding: .55rem 1rem; cursor: pointer; }
+  .pc-gostou { text-align: center; margin-top: 20px; font-family: var(--serif); font-size: 1.3rem; color: var(--azul-esc); }
+  .pc-gostou b { color: var(--ouro); }
 
   /* ---------- Depoimentos ---------- */
   .depo { background: var(--azul-claro); }
@@ -211,7 +232,6 @@
     .capas img:nth-child(4) { width: 236px; left: 102px; }
     .capas .selo-capa { width: 124px; left: auto; right: 6px; }
     .dores { grid-template-columns: repeat(3, 1fr); }
-    .grade { grid-template-columns: repeat(3, 1fr); }
     .trilho { padding-inline: calc((100% - 280px) / 2); }
     .slide { width: 280px; }
     .barra { left: 50%; right: auto; width: 520px; bottom: 16px; border-radius: 18px; transform: translate(-50%, 140%); }
@@ -332,26 +352,39 @@ src="https://www.facebook.com/tr?id=1129153966465518&ev=PageView&noscript=1"
   <p class="arraste">← deslize para o lado →</p>
 </section>
 
-<!-- ============ EM CADA DIA ============ -->
-<section>
+<!-- ============ PALAVRA DE HOJE (interativo) ============ -->
+<section class="palavra-sec" style="padding-bottom:28px">
   <div class="container">
     <div class="centro rv">
-      <div class="rotulo">Em cada dia você recebe</div>
-      <h2>Tudo o que você precisa para <em>rezar bem</em> cada dia</h2>
+      <div class="rotulo">Experimente agora</div>
+      <h2>Receba a sua <em>palavra de hoje</em></h2>
     </div>
-    <div class="grade">
-      <div class="rv"><b>📖</b><strong>Palavra</strong><small>Um versículo para iluminar o dia</small></div>
-      <div class="rv"><b>✦</b><strong>Frase do dia</strong><small>Para levar com você e compartilhar</small></div>
-      <div class="rv"><b>🙏</b><strong>Oração</strong><small>Confiada à intercessão de Maria</small></div>
-      <div class="rv"><b>💭</b><strong>Reflexão</strong><small>Curta, para aplicar na vida real</small></div>
-      <div class="rv"><b>🕊️</b><strong>Pensamento</strong><small>Para lembrar nos momentos difíceis</small></div>
-      <div class="rv"><b>✍️</b><strong>Anotações</strong><small>Seu diário de fé com Maria</small></div>
+    <div class="palavra-card rv" id="palavra" role="button" tabindex="0" aria-label="Toque para receber a sua palavra de hoje">
+      <div class="pc-fechado">
+        <div class="pc-selo">✦</div>
+        <p class="pc-convite">Toque para receber<br>a sua palavra de hoje</p>
+        <small>Uma página real do devocional</small>
+      </div>
+      <div class="pc-aberto" aria-live="polite">
+        <div class="pc-origem" id="pc-origem"></div>
+        <p class="pc-frase" id="pc-frase"></p>
+        <div class="pc-fio"></div>
+        <div class="pc-rot">Oração a Maria</div>
+        <p class="pc-oracao" id="pc-oracao"></p>
+        <button type="button" class="pc-outra" id="pc-outra">↻ Receber outra palavra</button>
+      </div>
     </div>
+    <p class="pc-gostou rv">Gostou? São <b>365 encontros</b> como este, um para cada dia.</p>
+    <figure class="citacao-papa rv">
+      <span class="cp-aspas" aria-hidden="true">&ldquo;</span>
+      <blockquote>Uma formação que serve ao anúncio do Evangelho só é possível juntos, navegando “em mar aberto”, mas não como navegantes solitários.</blockquote>
+      <figcaption><strong>Papa Leão XIV</strong><span>Discurso à Faculdade Teológica da Apúlia, 2 de março de 2026</span></figcaption>
+    </figure>
   </div>
 </section>
 
 <!-- ============ DEPOIMENTOS ============ -->
-<section class="depo">
+<section class="depo" style="padding-top:28px">
   <div class="container">
     <div class="centro rv">
       <div class="rotulo">Quem já reza com a gente</div>
@@ -483,6 +516,37 @@ src="https://www.facebook.com/tr?id=1129153966465518&ev=PageView&noscript=1"
     if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
   }), { threshold: .15 });
   document.querySelectorAll(".rv").forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + "ms"; io.observe(el); });
+
+  // ===== Palavra de hoje: frases e orações reais do devocional =====
+  const PALAVRAS = [
+    { d: "1º de janeiro", f: "Deus não procura lugares importantes; procura corações abertos.", o: "Mãe Maria, abre meu coração para os planos de Deus. Amém." },
+    { d: "4 de janeiro", f: "O medo encolhe a vida; a confiança a faz crescer.", o: "Mãe Maria, livra-me dos medos que me paralisam e me impedem de seguir em frente. Amém." },
+    { d: "11 de janeiro", f: "Um “sim” dito com amor vale mais do que mil promessas.", o: "Mãe Maria, ensina-me a dizer “sim” à vontade de Deus, mesmo quando não entendo tudo. Amém." },
+    { d: "19 de janeiro", f: "Deus não se cansa de olhar para os pequenos.", o: "Mãe Maria, quando eu me sentir sem valor, lembra-me de que sou precioso aos olhos de Deus. Amém." },
+    { d: "16 de fevereiro", f: "Hoje tem graça suficiente para hoje.", o: "Mãe Maria, livra-me da ansiedade e ensina-me a viver um dia de cada vez. Amém." },
+    { d: "9 de novembro", f: "Com Deus, o melhor ainda está por vir.", o: "Mãe Maria, renova minha esperança de que Deus tem coisas boas reservadas para mim. Amém." },
+    { d: "18 de novembro", f: "Há momentos em que o maior gesto de amor é simplesmente permanecer.", o: "Mãe Maria, dá-me força para permanecer junto de quem sofre. Amém." },
+    { d: "7 de dezembro", f: "Coragem não é ausência de medo, mas certeza de companhia.", o: "Mãe Maria, consola meu coração cansado e devolve-me a coragem. Amém." }
+  ];
+  const cartao = document.getElementById("palavra");
+  let ultima = -1, vezes = 0;
+  function revelar() {
+    let i; do { i = Math.floor(Math.random() * PALAVRAS.length); } while (i === ultima && PALAVRAS.length > 1);
+    ultima = i; vezes++;
+    const p = PALAVRAS[i];
+    const aberto = cartao.querySelector(".pc-aberto");
+    aberto.style.opacity = cartao.classList.contains("aberto") ? "0" : "";
+    setTimeout(() => {
+      document.getElementById("pc-origem").textContent = "Do devocional · " + p.d;
+      document.getElementById("pc-frase").textContent = p.f;
+      document.getElementById("pc-oracao").textContent = p.o;
+      cartao.classList.add("aberto"); cartao.setAttribute("aria-label", "Sua palavra de hoje");
+      aberto.style.opacity = "";
+    }, cartao.classList.contains("aberto") ? 250 : 0);
+    if (window.clarity) clarity("event", vezes === 1 ? "palavra_revelada" : "palavra_outra");
+  }
+  cartao.addEventListener("click", ev => { if (!cartao.classList.contains("aberto") || ev.target.id === "pc-outra") revelar(); });
+  cartao.addEventListener("keydown", ev => { if ((ev.key === "Enter" || ev.key === " ") && !cartao.classList.contains("aberto")) { ev.preventDefault(); revelar(); } });
 
   // Contadores de leitores: o do topo conta ao abrir, o de baixo quando aparece na tela
   function contar(el) {
