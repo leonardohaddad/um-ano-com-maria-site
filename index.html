@@ -444,13 +444,29 @@ src="https://www.facebook.com/tr?id=1129153966465518&ev=PageView&noscript=1"
 </div>
 
 <script>
-  // ===== Link de compra: troque "#oferta" pelo link da Hotmart/Kiwify quando tiver =====
+  // ===== Link de compra =====
   const LINK_COMPRA = "https://pay.hotmart.com/S108234028C?checkoutMode=10";
-  if (LINK_COMPRA !== "#oferta") document.querySelectorAll(".js-comprar").forEach(a => { a.href = LINK_COMPRA; });
-  // Meta Pixel: registra o clique para o checkout como "InitiateCheckout"
-  document.querySelectorAll(".js-comprar").forEach(a => a.addEventListener("click", () => {
-    if (window.fbq) fbq("track", "InitiateCheckout", { value: 27.00, currency: "BRL", content_name: "Um Ano com Maria" });
-  }));
+
+  // Monta o link do checkout repassando todos os parâmetros da URL atual
+  // (utm_*, fbclid, src, sck…). Parâmetros próprios do checkout, como checkoutMode, são mantidos.
+  function linkComParametros() {
+    const destino = new URL(LINK_COMPRA);
+    new URLSearchParams(window.location.search).forEach((valor, chave) => {
+      if (!destino.searchParams.has(chave)) destino.searchParams.append(chave, valor);
+    });
+    return destino.toString();
+  }
+
+  document.querySelectorAll(".js-comprar").forEach(a => {
+    a.href = linkComParametros(); // também vale para "abrir em nova aba" e cliques sem JS
+    a.addEventListener("click", ev => {
+      ev.preventDefault();
+      // Meta Pixel: registra o clique para o checkout como "InitiateCheckout"
+      if (window.fbq) fbq("track", "InitiateCheckout", { value: 27.00, currency: "BRL", content_name: "Um Ano com Maria" });
+      // Pequena espera para o evento do pixel sair antes de trocar de página
+      setTimeout(() => { window.location.href = linkComParametros(); }, 150);
+    });
+  });
 
   document.getElementById("ano").textContent = new Date().getFullYear();
   const reduzir = matchMedia("(prefers-reduced-motion: reduce)").matches;
