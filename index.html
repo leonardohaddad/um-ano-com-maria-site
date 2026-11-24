@@ -1,7 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- UTMify: rastreamento de UTMs (versão legível do código fornecido pela UTMify) -->
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer></script>
+
+  <!-- UTMify: pixel (versão legível do código fornecido pela UTMify) -->
+  <script>window.pixelId = "6af766907022187b1c6831a3";</script>
+  <script src="https://cdn.utmify.com.br/scripts/pixel/pixel.js" async defer></script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1460016896098460');
+  fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
+
 <title>Um Ano com Maria</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap">
 <style>
+html, body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
 /* Layout: VSL de coluna única. Vídeo no centro, botão revelado aos 2:44, depois a "palavra de hoje" interativa. Tema claro único, de propósito (cores da marca). */
 :root {
   --bg: #EEF1F6;
@@ -95,7 +124,9 @@ footer { padding-block: 32px 40px; text-align: center; font-size: 13px; color: v
 @media (prefers-reduced-motion: reduce) { .btn, .orb, .topbar .dot { animation: none; } .card-inner { transition: none; } .offer.show { animation: none; } }
 @media (max-width: 520px) { .card { min-height: 520px; } .back { padding: 24px 20px 20px; } }
 </style>
-
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1460016896098460&ev=PageView&noscript=1" alt=""></noscript>
 <div class="topbar"><span class="dot" aria-hidden="true"></span>Assista com o som ligado · Vídeo disponível por tempo limitado</div>
 
 <main class="wrap">
@@ -162,6 +193,8 @@ var REVELAR_EM_SEGUNDOS = 164; // 2:44 do vídeo
   var offer = document.getElementById("offer");
   var cta = document.getElementById("cta");
   cta.href = CHECKOUT_URL;
+  // Meta Pixel: avisa o Facebook quando a pessoa clica para comprar
+  cta.addEventListener("click", function () { if (window.fbq) fbq("track", "InitiateCheckout"); });
   var KEY = "uacm_cta_liberado";
 
   var revealed = false;
@@ -267,3 +300,5 @@ var REVELAR_EM_SEGUNDOS = 164; // 2:44 do vídeo
   });
 })();
 </script>
+</body>
+</html>
