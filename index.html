@@ -79,12 +79,14 @@ p { margin: 0; }
 
 /* bloco que aparece aos 2:44 */
 .offer { padding-block: 26px 8px; display: grid; gap: 14px; justify-items: center; text-align: center; }
-.offer[hidden] { display: none !important; }
+.esconder { display: none; }
 .offer.show { animation: rise .6s ease both; }
 @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 .btn { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 520px; min-height: 64px; padding: 18px 24px; border-radius: 14px; background: linear-gradient(180deg, #2FA35A, #23874A); color: #fff; font-weight: 700; font-size: clamp(17px, 2.6vw, 20px); text-decoration: none; text-transform: uppercase; letter-spacing: .02em; box-shadow: 0 6px 0 #1B6A3A, 0 18px 30px -12px rgba(35,135,74,.6); animation: nudge 2.4s ease-in-out infinite; }
 .btn:active { transform: translateY(3px); box-shadow: 0 3px 0 #1B6A3A; }
 @keyframes nudge { 0%, 85%, 100% { transform: none; } 90% { transform: scale(1.03); } }
+.offer .btn, .offer .guarantee { margin-left: auto; margin-right: auto; }
+.offer > * + * { margin-top: 14px; }
 .secure { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; font-size: 14px; color: var(--muted); }
 .guarantee { font-size: 15px; color: var(--muted); max-width: 46ch; }
 .guarantee strong { color: var(--ink); }
@@ -124,6 +126,13 @@ footer { padding-block: 32px 40px; text-align: center; font-size: 13px; color: v
 @media (prefers-reduced-motion: reduce) { .btn, .orb, .topbar .dot { animation: none; } .card-inner { transition: none; } .offer.show { animation: none; } }
 @media (max-width: 520px) { .card { min-height: 520px; } .back { padding: 24px 20px 20px; } }
 </style>
+  <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+  <link rel="preload" href="https://scripts.converteai.net/1c8bfaea-9aff-4ef4-af12-50dc7ddfde24/players/6b05793394120554998e01a2/v4/player.js" as="script">
+  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+  <link rel="dns-prefetch" href="https://cdn.converteai.net">
+  <link rel="dns-prefetch" href="https://scripts.converteai.net">
+  <link rel="dns-prefetch" href="https://images.converteai.net">
+  <link rel="dns-prefetch" href="https://license.vturb.com">
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1460016896098460&ev=PageView&noscript=1" alt=""></noscript>
@@ -137,17 +146,13 @@ footer { padding-block: 32px 40px; text-align: center; font-size: 13px; color: v
 
   <!-- VÍDEO: cole o código de incorporação do Vturb dentro da div abaixo, sem espaços antes ou depois. -->
   <div class="vsl">
-    <div id="vsl-slot"><script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js", s.async=!0,document.head.appendChild(s); </script> <div id="ifr_6b05793394120554998e01a2_wrapper" style="margin: 0 auto; width: 100%; max-width: 400px;"> <div style="position: relative; padding: 177.77777777777777% 0 0 0;" id="ifr_6b05793394120554998e01a2_aspect"> <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_6b05793394120554998e01a2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/1c8bfaea-9aff-4ef4-af12-50dc7ddfde24/players/6b05793394120554998e01a2/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe> </div> </div></div>
-    <div class="fake" id="fake">
-      <button class="play" id="fake-play" type="button" aria-label="Reproduzir vídeo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z" fill="#1C2E57"/></svg></button>
-      <span class="lbl">Seu vídeo entra aqui</span>
-      <span class="clock" id="fake-clock">0:00</span>
-      <span class="dev">Prévia sem o Vturb. <button type="button" id="skip">Pular para 2:44</button> para ver o botão aparecer.</span>
-    </div>
+    <div id="vsl-slot"><vturb-smartplayer id="vid-6b05793394120554998e01a2" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+    <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/1c8bfaea-9aff-4ef4-af12-50dc7ddfde24/players/6b05793394120554998e01a2/v4/player.js", s.async=!0,document.head.appendChild(s); </script></div>
   </div>
 
   <!-- Aparece aos 2:44 do vídeo -->
-  <section class="offer esconder" id="offer" hidden>
+  <div class="esconder" id="depois-244">
+  <section class="offer" id="offer">
     <a class="btn" id="cta" href="#">Quero o meu Um Ano com Maria</a>
     <div class="secure"><span>Compra 100% segura</span><span>Pix ou cartão</span><span>Acesso imediato no e-mail</span></div>
     <p class="guarantee"><strong>Garantia de 7 dias.</strong> Se o devocional não tocar o seu coração, devolvemos todo o seu dinheiro, sem perguntas.</p>
@@ -176,6 +181,7 @@ footer { padding-block: 32px 40px; text-align: center; font-size: 13px; color: v
     </div>
     <p class="note">São 365 páginas como esta, uma para cada dia do ano.</p>
   </section>
+  </div>
 </main>
 
 <footer class="wrap">
@@ -185,7 +191,7 @@ footer { padding-block: 32px 40px; text-align: center; font-size: 13px; color: v
 
 <script>
 // ===== CONFIGURAÇÃO =====
-var CHECKOUT_URL = "#";        // cole aqui o link da página de pagamento
+var CHECKOUT_URL = "https://pay.hotmart.com/S108234028C?checkoutMode=10"; // checkout da Hotmart
 var REVELAR_EM_SEGUNDOS = 164; // 2:44 do vídeo
 // ========================
 
@@ -195,77 +201,19 @@ var REVELAR_EM_SEGUNDOS = 164; // 2:44 do vídeo
   cta.href = CHECKOUT_URL;
   // Meta Pixel: avisa o Facebook quando a pessoa clica para comprar
   cta.addEventListener("click", function () { if (window.fbq) fbq("track", "InitiateCheckout"); });
-  var KEY = "uacm_cta_liberado";
 
-  var revealed = false;
-  function reveal() {
-    if (revealed) return;
-    revealed = true;
-    offer.hidden = false;
-    offer.style.display = "";
-    offer.classList.add("show");
-    try { localStorage.setItem(KEY, "1"); } catch (e) {}
-  }
-  // quem já viu o botão antes não precisa esperar de novo
-  try { if (localStorage.getItem(KEY) === "1") reveal(); } catch (e) {}
+  function mostrarBotao() { document.getElementById("depois-244").style.display = "block"; }
 
-  // 1) Player Vturb em formato de componente (se um dia trocar o código)
-  function hookVturb() {
-    var player = document.querySelector("vturb-smartplayer");
-    if (!player) return false;
-    player.addEventListener("player:ready", function () {
-      if (typeof player.displayHiddenElements === "function") {
-        player.displayHiddenElements(REVELAR_EM_SEGUNDOS, [".esconder"], { persist: true });
-        var obs = new MutationObserver(function () { if (getComputedStyle(offer).display !== "none" && offer.style.display !== "none") reveal(); });
-        obs.observe(offer, { attributes: true });
-      }
+  // Só para você testar: "?teste" no fim do link mostra o botão na hora. Para os clientes, só aos 2:44.
+  if (location.search.indexOf("teste") !== -1) mostrarBotao();
+
+  // Player da Vturb: ele mesmo mostra o botão (.esconder) no segundo certo do vídeo
+  var vturb = document.querySelector("vturb-smartplayer");
+  if (vturb) {
+    vturb.addEventListener("player:ready", function () {
+      vturb.displayHiddenElements(REVELAR_EM_SEGUNDOS, [".esconder"], { persist: false });
     });
-    return true;
   }
-  var tries = 0;
-  (function wait() { if (hookVturb() || ++tries > 40) return; setTimeout(wait, 250); })();
-
-  // 2) Player Vturb em iframe (o código atual): lê o tempo do vídeo pelas mensagens do player
-  function findTime(d, depth) {
-    if (d == null || depth > 4) return null;
-    if (typeof d === "string") { try { return findTime(JSON.parse(d), depth + 1); } catch (e) { return null; } }
-    if (typeof d !== "object") return null;
-    for (var k in d) {
-      if (/^(currentTime|current_time|time|seconds|position)$/i.test(k) && typeof d[k] === "number") return d[k];
-      var r = findTime(d[k], depth + 1); if (r != null) return r;
-    }
-    return null;
-  }
-  window.addEventListener("message", function (ev) {
-    if (!/converteai|vturb/i.test(ev.origin || "")) return;
-    var t = findTime(ev.data, 0);
-    if (t != null && t >= REVELAR_EM_SEGUNDOS) reveal();
-  });
-
-  // 3) Garantia: conta 2:44 a partir do primeiro toque no vídeo
-  var started = false;
-  window.addEventListener("blur", function () {
-    setTimeout(function () {
-      var a = document.activeElement;
-      if (!started && a && a.tagName === "IFRAME" && /^ifr_/.test(a.id)) {
-        started = true;
-        setTimeout(reveal, REVELAR_EM_SEGUNDOS * 1000);
-      }
-    }, 0);
-  });
-
-  // Prévia sem vídeo: simula o player
-  var t = 0, timer = null, clock = document.getElementById("fake-clock");
-  function fmt(s) { return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
-  function tick() { t++; clock.textContent = fmt(t); if (t >= REVELAR_EM_SEGUNDOS) reveal(); }
-  document.getElementById("fake-play").addEventListener("click", function () {
-    if (timer) { clearInterval(timer); timer = null; clock.textContent = fmt(t) + " (pausado)"; }
-    else { timer = setInterval(tick, 1000); }
-  });
-  document.getElementById("skip").addEventListener("click", function () {
-    t = REVELAR_EM_SEGUNDOS - 1; tick();
-    offer.scrollIntoView({ behavior: "smooth", block: "center" });
-  });
 })();
 
 // Palavra de hoje: páginas reais do devocional
