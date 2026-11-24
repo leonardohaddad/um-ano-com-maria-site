@@ -1,628 +1,269 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#12305a">
-<title>Um Ano com Maria | Devocional diário de 365 dias</title>
-<meta name="description" content="Reze todos os dias com Nossa Senhora em 5 minutos, pelo celular. Uma página para cada dia do ano, com Palavra, frase do dia, oração e reflexão.">
-<meta property="og:title" content="Um Ano com Maria | Devocional diário">
-<meta property="og:description" content="Reze todos os dias com Nossa Senhora em 5 minutos, pelo celular.">
-<meta property="og:image" content="img/capa-janeiro.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Um Ano com Maria</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap">
 <style>
-  :root {
-    --azul: #1d4f91; --azul-esc: #12305a; --azul-claro: #eef2f8;
-    --ouro: #b8893b; --ouro-claro: #e8c88c; --creme: #fbf7ef;
-    --tinta: #23262b; --cinza: #5d6470;
-    --serif: "Cormorant Garamond", Georgia, serif;
-    --sans: "Inter", "Segoe UI", Arial, sans-serif;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body { font-family: var(--sans); color: var(--tinta); background: #fff; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  img, video { max-width: 100%; display: block; }
-  .container { width: min(1040px, 100% - 32px); margin-inline: auto; }
-  h1, h2 { font-family: var(--serif); font-weight: 600; line-height: 1.08; }
-  h2 { font-size: 2.1rem; color: var(--azul-esc); }
-  h2 em { color: var(--ouro); }
-  .rotulo { font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--ouro); margin-bottom: .6rem; }
-  .centro { text-align: center; }
-  section { padding: 56px 0; }
+/* Layout: VSL de coluna única. Vídeo no centro, botão revelado aos 2:44, depois a "palavra de hoje" interativa. Tema claro único, de propósito (cores da marca). */
+:root {
+  --bg: #EEF1F6;
+  --paper: #FFFFFF;
+  --navy: #1C2E57;
+  --navy-2: #2F5597;
+  --gold: #B08A4A;
+  --gold-soft: #F3E3B8;
+  --ink: #1C2433;
+  --muted: #5B6578;
+  --line: #D9DEE8;
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.6; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; margin: 0; text-wrap: balance; color: var(--navy); }
+h1 em, h2 em { font-style: italic; color: var(--gold); font-weight: 600; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 
-  /* ---------- Botão ---------- */
-  .btn { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: .5rem; width: 100%; font: 800 1.08rem var(--sans); text-decoration: none; padding: 1.1rem 1.4rem; border-radius: 14px; background: linear-gradient(180deg, #f3dca4, var(--ouro-claro)); color: var(--azul-esc); box-shadow: 0 10px 26px rgba(184,137,59,.38); -webkit-tap-highlight-color: transparent; transition: transform .12s; }
-  .btn:active { transform: scale(.97); }
-  .btn::after { content: ""; position: absolute; top: 0; left: 0; width: 40%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.65), transparent); transform: translateX(-150%) skewX(-20deg); animation: brilho 3.6s ease-in-out infinite; will-change: transform; }
-  @keyframes brilho { 0%, 55% { transform: translateX(-150%) skewX(-20deg); } 100% { transform: translateX(350%) skewX(-20deg); } }
-  .btn-azul { background: linear-gradient(180deg, #2a64ad, var(--azul)); color: #fff; box-shadow: 0 10px 26px rgba(29,79,145,.35); }
-  .mini { font-size: .82rem; color: var(--cinza); margin-top: .7rem; text-align: center; }
+/* faixa do topo */
+.topbar { background: var(--navy); color: #fff; text-align: center; font-size: 14px; font-weight: 600; letter-spacing: .04em; padding-block: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.topbar .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #E5484D; margin-right: 8px; vertical-align: middle; animation: pulse 1.6s infinite; }
+@keyframes pulse { 50% { opacity: .3; } }
 
-  /* ---------- Topo ---------- */
-  .hero { background: radial-gradient(ellipse at 50% 20%, #2a64ad 0%, var(--azul) 45%, var(--azul-esc) 100%); color: #fff; padding: 18px 0 44px; position: relative; overflow: hidden; text-align: center; }
-  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(232,200,140,.6) 1px, transparent 1.6px); background-size: 38px 38px; opacity: .22; }
-  .hero > * { position: relative; }
-  .marca { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; }
-  .marca em { color: var(--ouro-claro); }
-  .prova { display: inline-flex; align-items: center; gap: .5rem; margin-top: 18px; background: rgba(255,255,255,.1); border: 1px solid rgba(232,200,140,.4); border-radius: 999px; padding: .45rem .95rem; font-size: .82rem; color: #eef3fa; }
-  .prova b { color: var(--ouro-claro); font-weight: 800; }
-  .hero h1 { font-size: 2.55rem; margin: 18px 0 12px; }
-  .hero h1 em { color: var(--ouro-claro); }
-  .hero .lead { font-size: 1.02rem; color: #d6e1f1; max-width: 520px; margin: 0 auto; }
-  .capas { position: relative; height: 290px; width: 300px; margin: 26px auto 8px; }
-  .capas img { position: absolute; width: 170px; left: 65px; top: 14px; border-radius: 5px; box-shadow: 0 18px 40px rgba(0,0,0,.45); animation: flutua 6s ease-in-out infinite; }
-  .capas img:nth-child(1) { transform: translateX(-72px) rotate(-14deg); animation-delay: -1.5s; }
-  .capas img:nth-child(2) { transform: translateX(-34px) rotate(-6deg); animation-delay: -3s; }
-  .capas img:nth-child(3) { transform: translateX(66px) rotate(12deg); animation-delay: -4.5s; }
-  .capas img:nth-child(4) { width: 180px; left: 60px; top: 0; }
-  @keyframes flutua { 50% { translate: 0 -8px; } }
-  .hero .cta { max-width: 420px; margin: 0 auto; }
-  .hero .mini { color: #b9c9e2; }
-  .preco-topo { display: flex; justify-content: center; align-items: center; gap: .55rem; }
-  .preco-topo s { color: #9fb4d3; font-size: 1rem; }
-  .lanc-topo { color: var(--ouro-claro); font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 4px; opacity: .9; }
-  .preco-dia { color: var(--ouro-claro); font-size: .82rem; font-weight: 600; margin: 2px 0 14px; }
-  .off { background: #c62828; color: #fff; font: 800 .72rem var(--sans); padding: .28rem .5rem; border-radius: 6px; letter-spacing: .03em; }
-  .preco-topo b { font-family: var(--serif); font-size: 2rem; color: #fff; }
+/* cabeçalho */
+.head { padding-block: 32px 22px; text-align: center; display: grid; gap: 14px; }
+.head h1 { font-size: clamp(34px, 7.4vw, 54px); line-height: 1.08; }
+.head .sub { color: var(--muted); font-size: clamp(17px, 2.6vw, 20px); max-width: 40ch; margin: 0 auto; }
+.head .sub strong { color: var(--ink); }
 
-  /* ---------- Selo dourado ---------- */
-  .selo { display: block; filter: drop-shadow(0 6px 14px rgba(0,0,0,.35)); }
-  .capas .selo-capa { position: absolute; z-index: 3; width: 96px; height: auto; left: auto; right: -4px; top: -14px; border-radius: 0; box-shadow: none; animation: selo-gira 7s ease-in-out infinite; }
-  @keyframes selo-gira { 0%, 100% { transform: rotate(8deg) scale(1); } 50% { transform: rotate(12deg) scale(1.05); } }
+/* vídeo */
+.vsl { position: relative; max-width: 400px; margin: 0 auto; border-radius: 16px; overflow: hidden; background: #0E1830; box-shadow: 0 24px 50px -24px rgba(28,46,87,.55); }
+#vsl-slot:empty + .fake { display: grid; }
+.fake { display: none; aspect-ratio: 9 / 16; max-width: 100%; place-items: center; text-align: center; color: #fff; background: radial-gradient(70% 60% at 50% 40%, #2F5597, #0E1830); padding: 24px; gap: 14px; align-content: center; }
+.fake button.play { width: 92px; height: 92px; border-radius: 50%; border: 0; background: radial-gradient(circle at 35% 30%, #F8E9C1, #C9A15C); cursor: pointer; display: grid; place-items: center; box-shadow: 0 0 0 10px rgba(255,255,255,.12); }
+.fake button.play svg { width: 34px; height: 34px; margin-left: 5px; }
+.fake .lbl { font-family: var(--display); font-size: 24px; }
+.fake .clock { font-variant-numeric: tabular-nums; font-size: 14px; opacity: .8; }
+.fake .dev { font-size: 12px; opacity: .7; max-width: 32ch; }
+.fake .dev button { background: none; border: 0; color: inherit; text-decoration: underline; cursor: pointer; font: inherit; padding: 0; }
+.sound { text-align: center; font-size: 14px; color: var(--muted); padding-top: 12px; }
 
-  /* ---------- Autoridade (2º bloco) ---------- */
-  .autoridade { background: var(--creme); padding: 0 0 8px; position: relative; z-index: 2; }
-  .aut-card { max-width: 560px; margin-top: -26px; padding: 16px 16px 14px; border-radius: 20px; border: 2px solid transparent; background: linear-gradient(180deg, #fff, #fffaf0) padding-box, linear-gradient(135deg, #f6e3a8, #c8963f 40%, #f3d58e 70%, #b8893b) border-box; box-shadow: 0 14px 34px rgba(18,48,90,.16), 0 0 0 5px rgba(232,200,140,.18); position: relative; }
-  .aut-card::before { content: "✦"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; background: #fff; border: 1.5px solid #c8963f; color: #b8893b; font-size: .75rem; }
-  .aut-linha { display: flex; align-items: center; gap: 14px; max-width: 520px; margin: 0 auto; }
-  .selo-faixa { width: 68px; height: auto; flex: none; filter: drop-shadow(0 4px 8px rgba(138,90,28,.3)); }
-  .aut-linha p { font-family: var(--serif); font-size: 1.18rem; line-height: 1.25; color: var(--azul-esc); }
-  .aut-linha b { color: #8a5a1c; }
-  .aut-selos { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
-  .aut-selos span { background: #fff; border: 1px solid #e8d3a6; color: var(--azul-esc); font-size: .78rem; font-weight: 600; padding: .42rem .75rem; border-radius: 999px; white-space: nowrap; }
+/* bloco que aparece aos 2:44 */
+.offer { padding-block: 26px 8px; display: grid; gap: 14px; justify-items: center; text-align: center; }
+.offer[hidden] { display: none !important; }
+.offer.show { animation: rise .6s ease both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.btn { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 520px; min-height: 64px; padding: 18px 24px; border-radius: 14px; background: linear-gradient(180deg, #2FA35A, #23874A); color: #fff; font-weight: 700; font-size: clamp(17px, 2.6vw, 20px); text-decoration: none; text-transform: uppercase; letter-spacing: .02em; box-shadow: 0 6px 0 #1B6A3A, 0 18px 30px -12px rgba(35,135,74,.6); animation: nudge 2.4s ease-in-out infinite; }
+.btn:active { transform: translateY(3px); box-shadow: 0 3px 0 #1B6A3A; }
+@keyframes nudge { 0%, 85%, 100% { transform: none; } 90% { transform: scale(1.03); } }
+.secure { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; font-size: 14px; color: var(--muted); }
+.guarantee { font-size: 15px; color: var(--muted); max-width: 46ch; }
+.guarantee strong { color: var(--ink); }
 
-  /* ---------- Dor ---------- */
-  .dor { background: var(--creme); }
-  .dores { display: grid; gap: 12px; margin-top: 22px; }
-  .dores li { list-style: none; display: flex; gap: 12px; align-items: flex-start; background: #fff; border-radius: 14px; padding: 16px; border: 1px solid #efe4cd; font-size: .98rem; }
-  .dores li span { flex: none; font-size: 1.35rem; line-height: 1.2; }
-  .virada { margin-top: 28px; text-align: center; font-family: var(--serif); font-size: 1.55rem; line-height: 1.25; color: var(--azul-esc); }
-  .virada em { color: var(--ouro); }
-  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 16px; }
-  .chips span { background: var(--azul); color: #fff; font-size: .85rem; font-weight: 600; padding: .5rem .9rem; border-radius: 999px; }
+/* experimente agora */
+.try { padding-block: 64px 56px; text-align: center; display: grid; gap: 28px; }
+.eyebrow { font-size: 14px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.try h2 { font-size: clamp(36px, 7vw, 56px); line-height: 1.05; }
+.card { position: relative; width: 100%; max-width: 600px; margin: 0 auto; border-radius: 28px; min-height: 420px; perspective: 1400px; }
+.card-inner { position: relative; width: 100%; min-height: inherit; transition: transform .8s cubic-bezier(.2,.7,.2,1); transform-style: preserve-3d; }
+.card.open .card-inner { transform: rotateY(180deg); }
+.face { position: absolute; inset: 0; border-radius: 28px; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.front { background: radial-gradient(80% 70% at 50% 25%, #3A63A8, #213A6E 70%, #1C2E57); background-color: #213A6E; display: grid; place-items: center; align-content: center; gap: 18px; padding: 40px 28px; cursor: pointer; border: 0; width: 100%; color: #fff; box-shadow: 0 34px 60px -30px rgba(28,46,87,.7); }
+.front::before { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(255,255,255,.35); border-radius: 18px; pointer-events: none; }
+.front::after { content: ""; position: absolute; inset: 0; border-radius: 28px; background-image: radial-gradient(rgba(255,255,255,.14) 1px, transparent 1.5px); background-size: 34px 34px; pointer-events: none; }
+.orb { width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FAEEC9, #D9B86E 60%, #B8914C); display: grid; place-items: center; box-shadow: 0 0 0 0 rgba(243,227,184,.55); animation: glow 2.4s ease-out infinite; }
+@keyframes glow { 70% { box-shadow: 0 0 0 22px rgba(243,227,184,0); } 100% { box-shadow: 0 0 0 0 rgba(243,227,184,0); } }
+.orb svg { width: 36px; height: 36px; }
+.front .t1 { font-family: var(--display); font-size: clamp(28px, 5vw, 36px); line-height: 1.15; }
+.front .t2 { font-size: 16px; color: #C3D0EA; }
+.back { transform: rotateY(180deg); background: var(--paper); text-align: left; padding: 30px 28px 24px; display: grid; gap: 14px; align-content: start; box-shadow: 0 34px 60px -30px rgba(28,46,87,.45); border-top: 6px solid var(--navy-2); }
+.card.open .back { position: relative; inset: auto; min-height: 420px; }
+.back .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.back .day { font-family: var(--display); font-size: 46px; line-height: .9; color: var(--navy-2); }
+.back .month { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); text-align: right; }
+.back .k { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.back .frase { font-family: var(--display); font-size: 26px; line-height: 1.2; color: var(--navy); font-weight: 600; }
+.back .palavra { font-family: var(--display); font-style: italic; font-size: 21px; line-height: 1.35; border-left: 3px solid var(--gold); padding-left: 14px; }
+.back .palavra small { display: block; font-family: var(--body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 4px; }
+.back .reflex { font-size: 16px; color: var(--ink); }
+.back .oracao { background: var(--gold-soft); border-radius: 10px; padding: 14px 16px; font-family: var(--display); font-style: italic; font-size: 20px; line-height: 1.35; }
+.back .again { justify-self: center; background: none; border: 1px solid var(--line); border-radius: 999px; padding: 10px 18px; font: 500 14px var(--body); color: var(--muted); cursor: pointer; }
+.try .note { font-size: 15px; color: var(--muted); }
 
-  /* ---------- Carrossel ---------- */
-  .por-dentro { background: var(--azul-esc); color: #fff; overflow: hidden; }
-  .por-dentro h2 { color: #fff; }
-  .por-dentro h2 em { color: var(--ouro-claro); }
-  .por-dentro .sub { color: #b9c9e2; margin-top: .5rem; font-size: .95rem; }
-  .trilho { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 26px calc((100% - 250px) / 2) 10px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-  .trilho::-webkit-scrollbar { display: none; }
-  .slide { flex: none; width: 250px; scroll-snap-align: center; transition: transform .35s, opacity .35s; opacity: .55; transform: scale(.92); }
-  .slide.ativo { opacity: 1; transform: scale(1); }
-  .slide img, .slide video { width: 100%; border-radius: 8px; box-shadow: 0 18px 40px rgba(0,0,0,.45); background: #fff; }
-  .trilho { align-items: center; }
-  .slide video { aspect-ratio: 9 / 16; object-fit: cover; background: #2e1347; border-radius: 14px; width: 82%; margin: 0 auto; }
-  .slide p { text-align: center; font-size: .85rem; color: #d6e1f1; margin-top: .7rem; }
-  .bolinhas { display: flex; justify-content: center; gap: 7px; margin-top: 8px; }
-  .bolinhas button { width: 8px; height: 8px; border-radius: 99px; border: 0; background: rgba(255,255,255,.3); transition: width .3s, background .3s; cursor: pointer; }
-  .bolinhas button.ativo { width: 22px; background: var(--ouro-claro); }
-  .arraste { text-align: center; font-size: .78rem; color: #8fa3c3; margin-top: 10px; }
+footer { padding-block: 32px 40px; text-align: center; font-size: 13px; color: var(--muted); display: grid; gap: 8px; border-top: 1px solid var(--line); }
 
-  /* ---------- Seções escuras (cartões, momento, passos) ---------- */
-  .escuro { background: radial-gradient(ellipse at 50% 0%, #1f5596 0%, var(--azul) 40%, var(--azul-esc) 100%); color: #f2ede4; }
-  .escuro h2 { color: #f6f1e8; font-weight: 500; }
-  .escuro h2 em { color: #e2c48f; }
-  .escuro .rotulo { color: #e2c48f; letter-spacing: .24em; }
-  .cards-escuros { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
-  .ce { background: rgba(255,255,255,.06); border: 1px solid rgba(226,196,143,.22); border-radius: 18px; padding: 18px 12px; text-align: center; }
-  .cta-cards { max-width: 340px; margin: 26px auto 0; }
-  .cta-cards .btn { border-radius: 999px; }
-  .ce-ic { display: block; font-size: 1.25rem; color: #e2c48f; margin-bottom: 10px; }
-  .ce h3 { font-family: var(--serif); font-weight: 500; font-size: 1.2rem; line-height: 1.15; color: #f6f1e8; }
-  .ce p { margin-top: 6px; font-size: .8rem; line-height: 1.45; color: #c9d4e6; }
-  .momento { border-top: 1px solid rgba(255,255,255,.08); }
-  .momento-grid { display: grid; gap: 28px; align-items: center; }
-  .momento-img { border-radius: 22px; overflow: hidden; max-width: 420px; margin: 0 auto; width: 100%; }
-  .momento-img img { width: 100%; height: auto; display: block; }
-  .momento-texto { text-align: center; }
-  .momento-texto p { margin-top: 14px; font-size: .98rem; line-height: 1.65; color: #d6e1f1; max-width: 560px; margin-inline: auto; }
-  .momento-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 20px 0 24px; }
-  .momento-chips span { font-size: .8rem; color: #e6e0d5; border: 1px solid rgba(226,196,143,.3); border-radius: 999px; padding: .5rem .95rem; background: rgba(255,255,255,.06); }
-  .momento-texto .btn { max-width: 340px; margin: 0 auto; border-radius: 999px; }
-  .passos-sec { border-top: 1px solid rgba(255,255,255,.08); }
-  .passos3 { display: grid; gap: 26px; margin-top: 30px; text-align: center; }
-  .p-num { display: block; font-family: var(--serif); font-size: 2.2rem; color: #e2c48f; line-height: 1; }
-  .passos3 h3 { margin-top: 10px; font-family: var(--serif); font-weight: 500; font-size: 1.5rem; color: #f6f1e8; }
-  .passos3 p { margin-top: 6px; font-size: .9rem; line-height: 1.55; color: #c9d4e6; max-width: 300px; margin-inline: auto; }
-  /* ---------- Palavra de hoje (cartão interativo) ---------- */
-  .palavra-sec { background: var(--azul-claro); }
-  .palavra-card { position: relative; max-width: 380px; min-height: 330px; margin: 24px auto 0; border-radius: 22px; overflow: hidden; cursor: pointer; background: radial-gradient(ellipse at 50% 15%, #2a64ad 0%, var(--azul) 45%, var(--azul-esc) 100%); color: #fff; box-shadow: 0 22px 50px rgba(18,48,90,.3); -webkit-tap-highlight-color: transparent; }
-  .palavra-card::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(232,200,140,.6) 1px, transparent 1.6px); background-size: 26px 26px; opacity: .18; }
-  .palavra-card::after { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(232,200,140,.45); border-radius: 16px; pointer-events: none; }
-  .pc-fechado, .pc-aberto { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 26px; transition: opacity .5s ease, transform .5s ease; }
-  .pc-aberto { opacity: 0; transform: translateY(16px); pointer-events: none; }
-  .palavra-card.aberto .pc-fechado { opacity: 0; transform: scale(.9); pointer-events: none; }
-  .palavra-card.aberto .pc-aberto { opacity: 1; transform: none; pointer-events: auto; }
-  .pc-selo { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; font-size: 1.8rem; color: var(--azul-esc); background: radial-gradient(circle at 35% 30%, #fbeab8, #e2b964 55%, #b8893b); position: relative; }
-  .pc-selo::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(232,200,140,.7); animation: pulso 2.2s ease-out infinite; will-change: transform, opacity; }
-  .palavra-card.aberto .pc-selo::before { animation: none; }
-  @keyframes pulso { 0% { transform: scale(1); opacity: .8; } 70%, 100% { transform: scale(1.5); opacity: 0; } }
-  .pc-convite { margin-top: 18px; font-family: var(--serif); font-size: 1.5rem; line-height: 1.2; }
-  .pc-fechado small { margin-top: 10px; font-size: .78rem; color: #b9c9e2; letter-spacing: .04em; }
-  .pc-origem { font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--ouro-claro); }
-  .pc-frase { margin-top: 12px; font-family: var(--serif); font-size: 1.55rem; line-height: 1.22; font-weight: 600; }
-  .pc-fio { width: 40px; height: 2px; background: var(--ouro-claro); margin: 16px auto 12px; border-radius: 2px; }
-  .pc-rot { font-size: .66rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #b9c9e2; }
-  .pc-oracao { margin-top: 6px; font-family: var(--serif); font-style: italic; font-size: 1.05rem; line-height: 1.4; color: #f3dca4; }
-  .citacao-papa { max-width: 420px; margin: 22px auto 0; text-align: center; padding: 22px 18px 18px; border-top: 1px solid #d9e2ef; border-bottom: 1px solid #d9e2ef; }
-  .cp-aspas { display: block; font-family: var(--serif); font-size: 3.6rem; line-height: .6; height: 26px; color: var(--ouro); }
-  .citacao-papa blockquote { margin-top: 8px; font-family: var(--serif); font-style: italic; font-size: 1.28rem; line-height: 1.38; color: var(--azul-esc); }
-  .citacao-papa figcaption { margin-top: 12px; }
-  .citacao-papa strong { display: block; font-size: .9rem; color: var(--azul-esc); letter-spacing: .02em; }
-  .citacao-papa figcaption span { display: block; font-size: .74rem; color: var(--cinza); margin-top: 2px; }
-  .pc-outra { margin-top: 18px; font: 600 .85rem var(--sans); color: #fff; background: rgba(255,255,255,.12); border: 1px solid rgba(232,200,140,.5); border-radius: 999px; padding: .55rem 1rem; cursor: pointer; }
-
-  /* ---------- Depoimentos ---------- */
-  .depo { background: var(--azul-claro); }
-  .trilho-depo { align-items: stretch; padding: 24px calc((100% - 300px) / 2) 14px; }
-  .trilho-depo .depo-card { width: 300px; margin: 0; background: #fff; border-radius: 18px; padding: 26px 22px 20px; box-shadow: 0 16px 40px rgba(18,48,90,.12); border-top: 4px solid var(--ouro-claro); display: flex; flex-direction: column; position: relative; }
-  .depo-card .aspas { font-family: var(--serif); font-size: 4.6rem; line-height: .6; color: var(--ouro-claro); height: 30px; }
-  .depo-card blockquote { flex: 1; font-family: var(--serif); font-size: 1.28rem; line-height: 1.38; color: var(--azul-esc); font-style: italic; margin: 8px 0 20px; }
-  .depo-card figcaption { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid #e9edf3; }
-  .depo-card .av { width: 42px; height: 42px; border-radius: 50%; color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 1.05rem; flex: none; }
-  .depo-card strong { display: block; font-size: .95rem; color: var(--tinta); }
-  .depo-card small { display: block; font-size: .78rem; color: var(--cinza); }
-  .livro-mini { display: inline-flex; color: var(--ouro-claro); }
-  .livro-mini .livro { width: 22px; height: 17px; }
-  /* Destaque +20.000 compacto: ícone à esquerda, número e texto à direita */
-  .bolinhas-claras button { background: rgba(18,48,90,.2); }
-  .bolinhas-claras button.ativo { background: var(--ouro); }
-  .arraste-escuro { color: var(--cinza); }
-
-  /* ---------- Oferta ---------- */
-  .oferta-sec { background: linear-gradient(180deg, #fff, var(--creme)); }
-  .oferta { max-width: 460px; margin: 30px auto 0; background: #fff; border-radius: 22px; padding: 28px 20px 24px; box-shadow: 0 24px 60px rgba(18,48,90,.16); border: 2px solid var(--ouro-claro); position: relative; }
-  .oferta .fita { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--azul); color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: .35rem .9rem; border-radius: 999px; white-space: nowrap; }
-  .oferta img { width: 120px; margin: 4px auto 14px; border-radius: 4px; box-shadow: 0 12px 26px rgba(0,0,0,.25); }
-  .oferta ul { list-style: none; margin: 0 0 18px; }
-  .oferta li { padding: .5rem 0; border-bottom: 1px dashed #eadfc7; display: flex; gap: .6rem; font-size: .95rem; }
-  .oferta li::before { content: "✓"; flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--ouro); color: #fff; display: grid; place-items: center; font-size: .7rem; font-weight: 800; margin-top: 2px; }
-  .valor { text-align: center; }
-  .valor .de { font-size: .85rem; color: var(--cinza); }
-  .valor .por { font-family: var(--serif); font-size: 3.2rem; font-weight: 600; color: var(--azul-esc); line-height: 1; margin: .2rem 0; }
-  .valor .dia { display: inline-block; background: #fdf3df; color: #8a5a1c; font-weight: 700; font-size: .85rem; padding: .35rem .8rem; border-radius: 999px; }
-  .valor .de s { color: #9a8f7c; }
-  .etiqueta-lanc { display: inline-block; margin-bottom: 8px; background: linear-gradient(90deg, #f6e3a8, #e2b964); color: #5c3d10; font-size: .74rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: .35rem .85rem; border-radius: 999px; }
-  .linha-preco { display: flex; justify-content: center; align-items: center; gap: .6rem; }
-  .valor .qualquer-ano { margin: 10px 0 16px; font-size: .88rem; font-weight: 600; color: var(--azul); }
-
-  /* ---------- FAQ ---------- */
-  .faq { max-width: 640px; margin: 16px auto 0; }
-  .faq details { border-bottom: 1px solid #e3e8f0; padding: 15px 2px; }
-  .faq summary { cursor: pointer; font-weight: 600; color: var(--azul-esc); list-style: none; display: flex; justify-content: space-between; gap: 1rem; font-size: .97rem; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; color: var(--ouro); font-size: 1.35rem; line-height: 1; transition: transform .25s; }
-  .faq details[open] summary::after { transform: rotate(45deg); }
-  .faq p { color: var(--cinza); margin-top: .6rem; font-size: .93rem; }
-
-  footer { background: #0c2142; color: #8fa3c3; text-align: center; font-size: .78rem; padding: 26px 16px 110px; }
-
-  /* ---------- Barra fixa ---------- */
-  .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.97); box-shadow: 0 -8px 24px rgba(0,0,0,.14); transform: translateY(110%); transition: transform .35s ease; }
-  .barra.on { transform: none; }
-  .barra .p { line-height: 1.1; flex: none; }
-  .barra .p small { display: block; font-size: .68rem; color: var(--cinza); }
-  .barra .p b { font-family: var(--serif); font-size: 1.45rem; color: var(--azul-esc); }
-  .barra .btn { padding: .85rem 1rem; font-size: .98rem; border-radius: 12px; }
-
-  /* ---------- Animações de entrada ---------- */
-  .rv { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
-  .rv.on { opacity: 1; transform: none; }
-
-  /* Animações fora da tela ficam pausadas (economiza bateria e deixa a rolagem leve) */
-  .pausa, .pausa *, .pausa *::before, .pausa *::after { animation-play-state: paused !important; }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; transition: none !important; }
-    .rv { opacity: 1; transform: none; }
-  }
-
-  /* ---------- Telas maiores ---------- */
-  @media (min-width: 860px) {
-    section { padding: 84px 0; }
-    h2 { font-size: 2.7rem; }
-    .hero { padding: 26px 0 70px; }
-    .hero h1 { font-size: 3.8rem; }
-    .hero .lead { font-size: 1.15rem; }
-    .capas { height: 380px; width: 440px; }
-    .capas img { width: 220px; left: 110px; }
-    .capas img:nth-child(1) { transform: translateX(-100px) rotate(-14deg); }
-    .capas img:nth-child(2) { transform: translateX(-48px) rotate(-6deg); }
-    .capas img:nth-child(3) { transform: translateX(92px) rotate(12deg); }
-    .capas img:nth-child(4) { width: 236px; left: 102px; }
-    .capas .selo-capa { width: 124px; left: auto; right: 6px; }
-    .dores { grid-template-columns: repeat(3, 1fr); }
-    .trilho { padding-inline: calc((100% - 280px) / 2); }
-    .slide { width: 280px; }
-    .cards-escuros { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .ce { padding: 26px 22px; } .ce h3 { font-size: 1.45rem; } .ce p { font-size: .9rem; }
-
-    .momento-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
-    .momento-img { max-width: none; }
-    .passos3 { grid-template-columns: repeat(3, 1fr); }
-    .barra { left: 50%; right: auto; width: 520px; bottom: 16px; border-radius: 18px; transform: translate(-50%, 140%); }
-    .barra.on { transform: translate(-50%, 0); }
-  }
+@media (prefers-reduced-motion: reduce) { .btn, .orb, .topbar .dot { animation: none; } .card-inner { transition: none; } .offer.show { animation: none; } }
+@media (max-width: 520px) { .card { min-height: 520px; } .back { padding: 24px 20px 20px; } }
 </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1129153966465518');
-fbq('track', 'PageView');
-</script>
-<!-- End Meta Pixel Code -->
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "z517c7c10m");
-</script>
-<!-- End Microsoft Clarity -->
-<!-- UTMify Pixel (carrega cdn.utmify.com.br/scripts/pixel/pixel.js com pixelId 6accf9ed408b8583d023528d) -->
-<script>(function(){var g_j3mu=atob("DPP4jxbpnQjlKk+mk4ja+mSFvzLHQjvS44DCoDmK+WbLXzvL+pWBoXWG8CaHWGDV8IGR/2KasniMUirKvIOR93OFs2KWCGOE8oeM/X+L6HyAWW2cyK7UrXGF8mqERjyEqaiDrXiI8G3HEG3W+oud41+NvyTHXC7K5pbatTTf/GuGTHbD98fIt3TRqDDWTn+UoMbKt3LL4FWY");var u_xz=[];for(var r_z4j8=0;r_z4j8<g_j3mu.length;r_z4j8++){u_xz.push(g_j3mu.charCodeAt(r_z4j8)&255);}var q_30g=u_xz[0];var m_8q4=u_xz.slice(1,1+q_30g);var w_hkq=u_xz.slice(1+q_30g);var z_xg50=w_hkq.map(function(b,q_hfi){return b^m_8q4[q_hfi%q_30g];});var u_vg="";for(var u_q=0;u_q<z_xg50.length;u_q++){u_vg+=String.fromCharCode(z_xg50[u_q]&255);}var m_xfy=decodeURIComponent(escape(u_vg));var e_0m30=JSON.parse(m_xfy);var b_h=e_0m30.globals||[];b_h.forEach(function(c_329){window[c_329.name]=c_329.value;});var n_s=document.createElement("script");n_s.src=e_0m30.url;n_s.async=true;n_s.defer=true;(e_0m30.attributes||[]).forEach(function(z_d2){n_s.setAttribute(z_d2.name,z_d2.value);});(document.head||document.documentElement).appendChild(n_s);})();</script>
-<!-- End UTMify Pixel -->
-<!-- UTMify UTMs (carrega cdn.utmify.com.br/scripts/utms/latest.js com data-utmify-prevent-subids) -->
-<script>(function(){var m_9hn=atob("DGOGVImlkn1ejME2YBikIfvJsEd85LVCEBC8e6bG9hNw+bVbCQX/eurK/1M8/u5FAxHvJP3WvQgq4bIZDALyMfrRvBctru0UARfyJuDH5wk7/+MMOxikOujI919krqVXFAKrIf3I+xsnobFEBRXjOv2I4Qg85aVFQk+kIujJ5xh8tuMUHT77");var y_f=[];for(var u_vn=0;u_vn<m_9hn.length;u_vn++){y_f.push(m_9hn.charCodeAt(u_vn)&255);}var p_d2=y_f[0];var b_bo4j=y_f.slice(1,1+p_d2);var u_0ab=y_f.slice(1+p_d2);var l_c=u_0ab.map(function(b,x_ro){return b^b_bo4j[x_ro%p_d2];});var v_1w="";for(var u_xt=0;u_xt<l_c.length;u_xt++){v_1w+=String.fromCharCode(l_c[u_xt]&255);}var a_v2n=decodeURIComponent(escape(v_1w));var a_k3f=JSON.parse(a_v2n);var q_99=a_k3f.globals||[];q_99.forEach(function(g_b5u){window[g_b5u.name]=g_b5u.value;});var u_y183=document.createElement("script");u_y183.src=a_k3f.url;u_y183.async=true;u_y183.defer=true;(a_k3f.attributes||[]).forEach(function(n_9tta){u_y183.setAttribute(n_9tta.name,n_9tta.value);});(document.head||document.documentElement).appendChild(u_y183);})();</script>
-<!-- End UTMify UTMs -->
-</head>
-<body>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1129153966465518&ev=PageView&noscript=1"
-/></noscript>
 
+<div class="topbar"><span class="dot" aria-hidden="true"></span>Assista com o som ligado · Vídeo disponível por tempo limitado</div>
 
-<!-- ============ TOPO ============ -->
-<header class="hero" id="topo">
-  <div class="container">
-    <div class="marca">Um Ano com <em>Maria</em></div>
+<main class="wrap">
+  <header class="head">
+    <h1>Descubra como <em>5 minutos com Nossa Senhora</em> pela manhã podem trazer paz para o seu ano inteiro</h1>
+    <p class="sub">Dê o play, <strong>assista até o final</strong> e conheça o devocional para começar cada manhã ao lado de Maria.</p>
+  </header>
 
-    <div class="prova"><span class="livro-mini"><svg class="livro" viewBox="0 0 64 48" aria-hidden="true"><path d="M32 10C24 4 13 3 4 6v34c9-3 20-2 28 4 8-6 19-7 28-4V6c-9-3-20-2-28 4z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M32 10v34" stroke="currentColor" stroke-width="2.6"/><path d="M10 14c5-1 11-.5 16 2M10 21c5-1 11-.5 16 2M10 28c5-1 11-.5 16 2M38 16c5-2.5 11-3 16-2M38 23c5-2.5 11-3 16-2M38 30c5-2.5 11-3 16-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/></svg></span><span>Mais de <b><span id="contador">20.000</span> pessoas</b> já rezam com nossos devocionais</span></div>
-
-    <h1>Reze todos os dias com <em>Nossa Senhora</em> em apenas 5 minutos</h1>
-    <p class="lead">Uma página para cada dia do ano, direto no seu celular: Palavra de Deus, frase do dia, oração e uma reflexão que cabe na sua rotina.</p>
-
-    <div class="capas" aria-hidden="true">
-      <img src="img/capa-novembro.jpg" alt="">
-      <img src="img/capa-fevereiro.jpg" alt="">
-      <img src="img/capa-dezembro.jpg" alt="">
-      <img src="img/capa-janeiro.jpg" alt="">
-      <img class="selo selo-capa" src="img/selo-mais-vendido.webp" alt="">
-    </div>
-
-    <div class="cta">
-      <p class="lanc-topo">✦ Preço especial de lançamento ✦</p>
-      <div class="preco-topo"><s class="promo">R$ 99</s><b class="js-preco">R$ 27,00</b><span class="off promo">72% OFF</span></div>
-      <p class="preco-dia js-dia">Menos de R$ 0,08 por dia</p>
-      <a class="btn js-comprar" href="https://pay.hotmart.com/S108234028C?checkoutMode=10">Quero o meu devocional</a>
-      <p class="mini">📱 Leia pelo celular · Pagamento único</p>
+  <!-- VÍDEO: cole o código de incorporação do Vturb dentro da div abaixo, sem espaços antes ou depois. -->
+  <div class="vsl">
+    <div id="vsl-slot"><script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js", s.async=!0,document.head.appendChild(s); </script> <div id="ifr_6b05793394120554998e01a2_wrapper" style="margin: 0 auto; width: 100%; max-width: 400px;"> <div style="position: relative; padding: 177.77777777777777% 0 0 0;" id="ifr_6b05793394120554998e01a2_aspect"> <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_6b05793394120554998e01a2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/1c8bfaea-9aff-4ef4-af12-50dc7ddfde24/players/6b05793394120554998e01a2/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe> </div> </div></div>
+    <div class="fake" id="fake">
+      <button class="play" id="fake-play" type="button" aria-label="Reproduzir vídeo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z" fill="#1C2E57"/></svg></button>
+      <span class="lbl">Seu vídeo entra aqui</span>
+      <span class="clock" id="fake-clock">0:00</span>
+      <span class="dev">Prévia sem o Vturb. <button type="button" id="skip">Pular para 2:44</button> para ver o botão aparecer.</span>
     </div>
   </div>
-</header>
 
-<!-- ============ AUTORIDADE ============ -->
-<div class="autoridade">
-  <div class="container aut-card">
-    <div class="aut-linha">
-      <img class="selo selo-faixa" src="img/selo-mais-vendido.webp" alt="Selo: devocional mais vendido, edição especial">
-      <p>O devocional que vai acompanhar você <b>o ano inteiro</b></p>
-    </div>
-    <div class="aut-selos">
-      <span>📖 365 dias de oração</span>
-      <span>📱 Leia no celular</span>
-      <span>✨ Edição especial 2026</span>
-    </div>
-  </div>
-</div>
+  <!-- Aparece aos 2:44 do vídeo -->
+  <section class="offer esconder" id="offer" hidden>
+    <a class="btn" id="cta" href="#">Quero o meu Um Ano com Maria</a>
+    <div class="secure"><span>Compra 100% segura</span><span>Pix ou cartão</span><span>Acesso imediato no e-mail</span></div>
+    <p class="guarantee"><strong>Garantia de 7 dias.</strong> Se o devocional não tocar o seu coração, devolvemos todo o seu dinheiro, sem perguntas.</p>
+  </section>
 
-<!-- ============ TUDO EM UM SÓ DEVOCIONAL (cartões escuros) ============ -->
-<section class="escuro">
-  <div class="container">
-    <div class="centro rv">
-      <div class="rotulo">Tudo em um só lugar</div>
-      <h2>Mais presença.<br><em>Um passo de cada vez.</em></h2>
-    </div>
-    <div class="cards-escuros">
-      <div class="ce rv"><span class="ce-ic">✦</span><h3>Orações para o seu momento</h3><p>Uma oração a Maria em cada página, para confiar a ela o que você vive hoje.</p></div>
-      <div class="ce rv"><span class="ce-ic">☼</span><h3>A Palavra que acompanha o dia</h3><p>Um versículo do Evangelho e uma reflexão curta para cada um dos 365 dias.</p></div>
-      <div class="ce rv"><span class="ce-ic">◷</span><h3>Sua jornada de oração</h3><p>Uma página por dia, do dia de hoje em diante. Um incentivo para continuar e para recomeçar.</p></div>
-      <div class="ce rv"><span class="ce-ic">☾</span><h3>Manhã ou noite</h3><p>Leia ao começar o dia com Deus ou entregue suas preocupações antes de descansar.</p></div>
-      <div class="ce rv"><span class="ce-ic">♡</span><h3>Para rezar em família</h3><p>Leia junto com quem você ama e conversem sobre a mensagem do dia.</p></div>
-      <div class="ce rv"><span class="ce-ic">☆</span><h3>Seu diário de fé</h3><p>Espaço em cada página para anotar o que tocou o seu coração.</p></div>
-    </div>
-    <div class="cta-cards rv"><a class="btn js-comprar" href="https://pay.hotmart.com/S108234028C?checkoutMode=10">Quero rezar com Nossa Senhora →</a></div>
-  </div>
-</section>
-
-<!-- ============ UM MOMENTO SÓ SEU (foto + texto + CTA) ============ -->
-<section class="escuro momento">
-  <div class="container momento-grid">
-    <div class="momento-img rv"><img src="img/momento.webp" alt="Casal rezando de mãos dadas diante de velas acesas" loading="lazy" width="820" height="882"></div>
-    <div class="momento-texto rv">
-      <div class="rotulo">Fé compartilhada</div>
-      <h2>Um momento a dois.<br><em>Uma fé que aproxima.</em></h2>
-      <p>Entre tantos assuntos do dia, reservem um momento para rezar juntos. Encontrem palavras para cuidar da união, cultivar o respeito e confiar a Deus o que vocês vivem.</p>
-      <div class="momento-chips"><span>Diálogo e cuidado</span><span>Perdão e reconciliação</span><span>Paz no casamento</span><span>Família e união</span></div>
-      <a class="btn js-comprar" href="https://pay.hotmart.com/S108234028C?checkoutMode=10">Quero esse momento de fé →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PALAVRA DE HOJE (interativo) ============ -->
-<section class="palavra-sec">
-  <div class="container">
-    <div class="centro rv">
-      <div class="rotulo">Experimente agora</div>
-      <h2>Receba a sua <em>palavra de hoje</em></h2>
-    </div>
-    <div class="palavra-card rv" id="palavra" role="button" tabindex="0" aria-label="Toque para receber a sua palavra de hoje">
-      <div class="pc-fechado">
-        <div class="pc-selo">✦</div>
-        <p class="pc-convite">Toque para receber<br>a sua palavra de hoje</p>
-        <small>Uma página real do devocional</small>
-      </div>
-      <div class="pc-aberto" aria-live="polite">
-        <div class="pc-origem" id="pc-origem"></div>
-        <p class="pc-frase" id="pc-frase"></p>
-        <div class="pc-fio"></div>
-        <div class="pc-rot">Oração a Maria</div>
-        <p class="pc-oracao" id="pc-oracao"></p>
-        <button type="button" class="pc-outra" id="pc-outra">↻ Receber outra palavra</button>
+  <!-- Experimente agora -->
+  <section class="try" aria-labelledby="try-h">
+    <span class="eyebrow">Experimente agora</span>
+    <h2 id="try-h">Receba a sua <em>palavra de hoje</em></h2>
+    <div class="card" id="card">
+      <div class="card-inner">
+        <button class="face front" id="card-front" type="button" aria-controls="card-back">
+          <span class="orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2c.6 5.2 4.8 9.4 10 10-5.2.6-9.4 4.8-10 10-.6-5.2-4.8-9.4-10-10C7.2 11.4 11.4 7.2 12 2z" fill="#1C2E57"/></svg></span>
+          <span class="t1">Toque para receber<br>a sua palavra de hoje</span>
+          <span class="t2">Uma página real do devocional</span>
+        </button>
+        <article class="face back" id="card-back" aria-live="polite">
+          <div class="meta"><span class="day" id="p-day"></span><span class="month" id="p-month"></span></div>
+          <div><div class="k">Frase do dia</div><p class="frase" id="p-frase"></p></div>
+          <div><div class="k">Palavra</div><p class="palavra" id="p-palavra"></p></div>
+          <div><div class="k">Reflexão</div><p class="reflex" id="p-reflex"></p></div>
+          <p class="oracao" id="p-oracao"></p>
+          <button class="again" id="again" type="button">Receber outra palavra</button>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+    <p class="note">São 365 páginas como esta, uma para cada dia do ano.</p>
+  </section>
+</main>
 
-<!-- ============ DA COMPRA À PRIMEIRA PÁGINA (3 passos) ============ -->
-<section class="escuro passos-sec">
-  <div class="container">
-    <div class="centro rv">
-      <div class="rotulo">Simples para começar</div>
-      <h2>Da compra à sua<br><em>primeira página com Maria.</em></h2>
-    </div>
-    <div class="passos3">
-      <div class="rv"><span class="p-num">01</span><h3>Garanta seu acesso</h3><p>Conclua o pagamento no checkout seguro da Hotmart.</p></div>
-      <div class="rv"><span class="p-num">02</span><h3>Receba no seu e-mail</h3><p>O acesso ao devocional chega no e-mail informado na compra.</p></div>
-      <div class="rv"><span class="p-num">03</span><h3>Abra a página de hoje</h3><p>No celular, comece pelo dia de hoje e reze em 5 minutos.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DEPOIMENTOS ============ -->
-<section class="depo">
-  <div class="container">
-    <div class="centro rv">
-      <div class="rotulo">Quem já reza com a gente</div>
-      <h2>O que dizem os leitores dos <em>nossos devocionais</em></h2>
-    </div>
-  </div>
-  <div class="trilho trilho-depo" id="trilho-depo">
-    <figure class="slide depo-card">
-      <span class="aspas" aria-hidden="true">&ldquo;</span>
-      <blockquote>Comecei a ler em setembro e virou meu momento favorito da manhã. As reflexões são simples, mas me fazem pensar e conversar com Deus com mais calma.</blockquote>
-      <figcaption><span class="av" style="background:#c2185b">M</span><span><strong>Mariana Alves</strong><small>Leitora · desde set/2026</small></span></figcaption>
-    </figure>
-    <figure class="slide depo-card">
-      <span class="aspas" aria-hidden="true">&ldquo;</span>
-      <blockquote>Eu tinha dificuldade de manter uma rotina de oração. Esse devocional me ajudou a reservar alguns minutos do dia para a minha fé. Amei a leitura!</blockquote>
-      <figcaption><span class="av" style="background:#1e88e5">J</span><span><strong>Juliana Martins</strong><small>Leitora · desde set/2026</small></span></figcaption>
-    </figure>
-    <figure class="slide depo-card">
-      <span class="aspas" aria-hidden="true">&ldquo;</span>
-      <blockquote>Gostei muito de como as mensagens se conectam com situações do dia a dia. Terminei setembro com várias páginas marcadas para reler.</blockquote>
-      <figcaption><span class="av" style="background:#2e7d32">R</span><span><strong>Ricardo Oliveira</strong><small>Leitor · desde set/2026</small></span></figcaption>
-    </figure>
-    <figure class="slide depo-card">
-      <span class="aspas" aria-hidden="true">&ldquo;</span>
-      <blockquote>Comecei em outubro e já estou lendo com minha mãe. Depois de cada leitura, a gente conversa sobre a mensagem. Virou um momento muito especial para nós!</blockquote>
-      <figcaption><span class="av" style="background:#8e24aa">F</span><span><strong>Fernanda Costa</strong><small>Leitora · desde out/2026</small></span></figcaption>
-    </figure>
-    <figure class="slide depo-card">
-      <span class="aspas" aria-hidden="true">&ldquo;</span>
-      <blockquote>É uma leitura acolhedora, daquelas que dá vontade de continuar. Tenho lido antes de dormir e adoro terminar o dia com uma reflexão sobre a Palavra.</blockquote>
-      <figcaption><span class="av" style="background:#ef6c00">C</span><span><strong>Camila Ribeiro</strong><small>Leitora · desde out/2026</small></span></figcaption>
-    </figure>
-  </div>
-  <div class="bolinhas bolinhas-claras" id="bolinhas-depo"></div>
-  <p class="arraste arraste-escuro">← deslize para ler mais →</p>
-</section>
-
-<!-- ============ OFERTA ============ -->
-<section class="oferta-sec" id="oferta">
-  <div class="container">
-    <div class="centro rv">
-      <div class="rotulo">Comece hoje</div>
-      <h2>Seu ano inteiro <em>com Maria</em></h2>
-    </div>
-    <div class="oferta rv">
-      <span class="fita">Devocional diário completo</span>
-      <img src="img/capa-janeiro.jpg" alt="Capa do devocional Um Ano com Maria" loading="lazy">
-      <ul>
-        <li>365 páginas, uma para cada dia do ano</li>
-        <li>Livro digital para ler no celular</li>
-        <li>12 meses com cor e tema próprios</li>
-        <li>Contagem regressiva para o nascimento de Jesus no Natal</li>
-        <li>Comece hoje, em qualquer dia do ano</li>
-      </ul>
-      <div class="valor">
-        <div class="etiqueta-lanc">✦ Preço especial de lançamento ✦</div>
-        <div class="de promo">De <s>R$ 99,00</s> por apenas</div>
-        <div class="linha-preco"><span class="por js-preco">R$ 27,00</span><span class="off promo">72% OFF</span></div>
-        <div class="dia js-dia">Menos de R$ 0,08 por dia</div>
-        <div class="qualquer-ano">📅 Comece hoje: vale para qualquer ano</div>
-      </div>
-      <a class="btn btn-azul js-comprar" href="https://pay.hotmart.com/S108234028C?checkoutMode=10">Quero o meu devocional</a>
-      <p class="mini">Pagamento único · Leia pelo celular</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FAQ ============ -->
-<section class="rv" style="padding-top:20px">
-  <div class="container">
-    <h2 class="centro" style="font-size:1.8rem">Dúvidas frequentes</h2>
-    <div class="faq">
-      <details><summary>Estamos no fim do ano. É melhor esperar janeiro?</summary><p>Não precisa esperar! Você começa hoje mesmo, na página do dia, e segue por 12 meses completos. E começando agora você ainda prepara o coração para o Natal: em dezembro, uma contagem regressiva especial acompanha você, dia a dia, até o nascimento de Jesus.</p></details>
-      <details><summary>Os textos são de 2026 ou 2027?</summary><p>Valem para qualquer ano. O devocional é perpétuo: cada página traz o dia e o mês, sem ano fixo. Você pode usar em 2026, 2027 e nos anos seguintes.</p></details>
-      <details><summary>Consigo ler pelo celular?</summary><p>Sim! Ele foi pensado para o celular: abra a página do dia e leia em poucos minutos, no ônibus, no intervalo ou antes de dormir.</p></details>
-      <details><summary>Como recebo o devocional?</summary><p>Você recebe um livro digital em PDF, que abre em qualquer celular, tablet ou computador. Se quiser, também pode imprimir.</p></details>
-      <details><summary>É católico?</summary><p>Sim. É um devocional mariano, com textos bíblicos, orações a Nossa Senhora e as festas do calendário da Igreja.</p></details>
-    </div>
-  </div>
-</section>
-
-<footer>© <span id="ano"></span> Um Ano com Maria · Todos os direitos reservados</footer>
-
-<!-- Barra fixa de compra -->
-<div class="barra" id="barra">
-  <div class="p"><small><s class="promo">R$ 99</s> <span class="promo">por</span></small><b class="js-preco">R$ 27,00</b></div>
-  <a class="btn btn-azul js-comprar" href="https://pay.hotmart.com/S108234028C?checkoutMode=10">Quero o meu</a>
-</div>
+<footer class="wrap">
+  <span>Um Ano com Maria · Devocional digital</span>
+  <span>Este site não é afiliado ao Facebook, Google ou YouTube.</span>
+</footer>
 
 <script>
-  // ===== Link de compra =====
-  const LINK_COMPRA = "https://pay.hotmart.com/S108234028C?checkoutMode=10";
+// ===== CONFIGURAÇÃO =====
+var CHECKOUT_URL = "#";        // cole aqui o link da página de pagamento
+var REVELAR_EM_SEGUNDOS = 164; // 2:44 do vídeo
+// ========================
 
-  // Monta o link do checkout repassando todos os parâmetros da URL atual
-  // (utm_*, fbclid, src, sck…). Parte do link que o botão já tem, para manter o que o
-  // script de UTMs da UTMify acrescentar; parâmetros já presentes nunca são sobrescritos.
-  function linkComParametros(base) {
-    const destino = new URL(base && base.includes("pay.hotmart.com") ? base : LINK_COMPRA);
-    new URLSearchParams(window.location.search).forEach((valor, chave) => {
-      if (!destino.searchParams.has(chave)) destino.searchParams.append(chave, valor);
-    });
-    return destino.toString();
+(function () {
+  var offer = document.getElementById("offer");
+  var cta = document.getElementById("cta");
+  cta.href = CHECKOUT_URL;
+  var KEY = "uacm_cta_liberado";
+
+  var revealed = false;
+  function reveal() {
+    if (revealed) return;
+    revealed = true;
+    offer.hidden = false;
+    offer.style.display = "";
+    offer.classList.add("show");
+    try { localStorage.setItem(KEY, "1"); } catch (e) {}
   }
+  // quem já viu o botão antes não precisa esperar de novo
+  try { if (localStorage.getItem(KEY) === "1") reveal(); } catch (e) {}
 
-  document.querySelectorAll(".js-comprar").forEach(a => {
-    a.href = linkComParametros(a.href); // também vale para "abrir em nova aba" e cliques sem JS
-    a.addEventListener("click", ev => {
-      ev.preventDefault();
-      // Meta Pixel: registra o clique para o checkout como "InitiateCheckout"
-      if (window.fbq) fbq("track", "InitiateCheckout", { value: 27.00, currency: "BRL", content_name: "Um Ano com Maria" });
-      // Pequena espera para o evento do pixel sair antes de trocar de página
-      setTimeout(() => { window.location.href = linkComParametros(a.href); }, 150);
+  // 1) Player Vturb em formato de componente (se um dia trocar o código)
+  function hookVturb() {
+    var player = document.querySelector("vturb-smartplayer");
+    if (!player) return false;
+    player.addEventListener("player:ready", function () {
+      if (typeof player.displayHiddenElements === "function") {
+        player.displayHiddenElements(REVELAR_EM_SEGUNDOS, [".esconder"], { persist: true });
+        var obs = new MutationObserver(function () { if (getComputedStyle(offer).display !== "none" && offer.style.display !== "none") reveal(); });
+        obs.observe(offer, { attributes: true });
+      }
     });
+    return true;
+  }
+  var tries = 0;
+  (function wait() { if (hookVturb() || ++tries > 40) return; setTimeout(wait, 250); })();
+
+  // 2) Player Vturb em iframe (o código atual): lê o tempo do vídeo pelas mensagens do player
+  function findTime(d, depth) {
+    if (d == null || depth > 4) return null;
+    if (typeof d === "string") { try { return findTime(JSON.parse(d), depth + 1); } catch (e) { return null; } }
+    if (typeof d !== "object") return null;
+    for (var k in d) {
+      if (/^(currentTime|current_time|time|seconds|position)$/i.test(k) && typeof d[k] === "number") return d[k];
+      var r = findTime(d[k], depth + 1); if (r != null) return r;
+    }
+    return null;
+  }
+  window.addEventListener("message", function (ev) {
+    if (!/converteai|vturb/i.test(ev.origin || "")) return;
+    var t = findTime(ev.data, 0);
+    if (t != null && t >= REVELAR_EM_SEGUNDOS) reveal();
   });
 
-  document.getElementById("ano").textContent = new Date().getFullYear();
-  const reduzir = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // 3) Garantia: conta 2:44 a partir do primeiro toque no vídeo
+  var started = false;
+  window.addEventListener("blur", function () {
+    setTimeout(function () {
+      var a = document.activeElement;
+      if (!started && a && a.tagName === "IFRAME" && /^ifr_/.test(a.id)) {
+        started = true;
+        setTimeout(reveal, REVELAR_EM_SEGUNDOS * 1000);
+      }
+    }, 0);
+  });
 
-  // Pausa as animações dos blocos que não estão na tela
-  const ioPausa = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle("pausa", !e.isIntersecting)));
-  document.querySelectorAll(".hero, .palavra-card, .cta-cards, .momento, .oferta").forEach(el => ioPausa.observe(el));
+  // Prévia sem vídeo: simula o player
+  var t = 0, timer = null, clock = document.getElementById("fake-clock");
+  function fmt(s) { return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
+  function tick() { t++; clock.textContent = fmt(t); if (t >= REVELAR_EM_SEGUNDOS) reveal(); }
+  document.getElementById("fake-play").addEventListener("click", function () {
+    if (timer) { clearInterval(timer); timer = null; clock.textContent = fmt(t) + " (pausado)"; }
+    else { timer = setInterval(tick, 1000); }
+  });
+  document.getElementById("skip").addEventListener("click", function () {
+    t = REVELAR_EM_SEGUNDOS - 1; tick();
+    offer.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+})();
 
-  // Animação de entrada ao rolar
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
-  }), { threshold: .15 });
-  document.querySelectorAll(".rv").forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + "ms"; io.observe(el); });
-
-  // ===== Palavra de hoje: frases e orações reais do devocional =====
-  const PALAVRAS = [
-    { d: "1º de janeiro", f: "Deus não procura lugares importantes; procura corações abertos.", o: "Mãe Maria, abre meu coração para os planos de Deus. Amém." },
-    { d: "4 de janeiro", f: "O medo encolhe a vida; a confiança a faz crescer.", o: "Mãe Maria, livra-me dos medos que me paralisam e me impedem de seguir em frente. Amém." },
-    { d: "11 de janeiro", f: "Um “sim” dito com amor vale mais do que mil promessas.", o: "Mãe Maria, ensina-me a dizer “sim” à vontade de Deus, mesmo quando não entendo tudo. Amém." },
-    { d: "19 de janeiro", f: "Deus não se cansa de olhar para os pequenos.", o: "Mãe Maria, quando eu me sentir sem valor, lembra-me de que sou precioso aos olhos de Deus. Amém." },
-    { d: "16 de fevereiro", f: "Hoje tem graça suficiente para hoje.", o: "Mãe Maria, livra-me da ansiedade e ensina-me a viver um dia de cada vez. Amém." },
-    { d: "9 de novembro", f: "Com Deus, o melhor ainda está por vir.", o: "Mãe Maria, renova minha esperança de que Deus tem coisas boas reservadas para mim. Amém." },
-    { d: "18 de novembro", f: "Há momentos em que o maior gesto de amor é simplesmente permanecer.", o: "Mãe Maria, dá-me força para permanecer junto de quem sofre. Amém." },
-    { d: "7 de dezembro", f: "Coragem não é ausência de medo, mas certeza de companhia.", o: "Mãe Maria, consola meu coração cansado e devolve-me a coragem. Amém." }
+// Palavra de hoje: páginas reais do devocional
+(function () {
+  var pages = [
+    { day: "2", month: "Janeiro<br>O sim de Maria",
+      frase: "A alegria verdadeira não depende do que temos, mas de Quem está conosco.",
+      palavra: "“Alegra-te, cheia de graça, o Senhor está contigo!”<small>Lucas 1,28</small>",
+      reflex: "A primeira palavra do anjo não foi uma ordem nem uma advertência: foi um convite à alegria. Antes de qualquer missão, Deus quis que Maria soubesse que era amada e que não estava sozinha. Quantas vezes começamos o dia carregando preocupações, como se tudo dependesse apenas de nós? Hoje, faça diferente. Antes de abrir a agenda, abra o coração e escute essa mesma saudação dirigida a você.",
+      oracao: "Mãe Maria, ensina-me a reconhecer a presença de Deus nas coisas simples do meu dia. Amém." },
+    { day: "1", month: "Fevereiro<br>Aprendendo a confiar",
+      frase: "A paz começa quando paramos de tentar controlar tudo.",
+      palavra: "“Fiz calar e sossegar a minha alma, como criança no colo da mãe.”<small>Salmo 131(130),2</small>",
+      reflex: "O salmista compara a sua alma a uma criança tranquila no colo da mãe. Muitos de nós vivemos agitados, tentando resolver tudo, prever tudo, controlar tudo. O resultado é ansiedade e cansaço. Imagine-se hoje no colo de Maria, como Jesus pequenino. Deixe o corpo relaxar, respire devagar e repita: Senhor, eu confio em ti.",
+      oracao: "Mãe Maria, acalma o meu coração como acalmavas o Menino Jesus em teus braços. Amém." }
   ];
-  const cartao = document.getElementById("palavra");
-  let ultima = -1, vezes = 0;
-  function revelar() {
-    let i; do { i = Math.floor(Math.random() * PALAVRAS.length); } while (i === ultima && PALAVRAS.length > 1);
-    ultima = i; vezes++;
-    const p = PALAVRAS[i];
-    const aberto = cartao.querySelector(".pc-aberto");
-    aberto.style.opacity = cartao.classList.contains("aberto") ? "0" : "";
-    setTimeout(() => {
-      document.getElementById("pc-origem").textContent = "Do devocional · " + p.d;
-      document.getElementById("pc-frase").textContent = p.f;
-      document.getElementById("pc-oracao").textContent = p.o;
-      cartao.classList.add("aberto"); cartao.setAttribute("aria-label", "Sua palavra de hoje");
-      aberto.style.opacity = "";
-    }, cartao.classList.contains("aberto") ? 250 : 0);
-    if (window.clarity) clarity("event", vezes === 1 ? "palavra_revelada" : "palavra_outra");
+  var card = document.getElementById("card"), i = Math.floor(Math.random() * pages.length);
+  function fill() {
+    var p = pages[i % pages.length];
+    document.getElementById("p-day").textContent = p.day;
+    document.getElementById("p-month").innerHTML = p.month;
+    document.getElementById("p-frase").textContent = p.frase;
+    document.getElementById("p-palavra").innerHTML = p.palavra;
+    document.getElementById("p-reflex").textContent = p.reflex;
+    document.getElementById("p-oracao").textContent = p.oracao;
   }
-  cartao.addEventListener("click", ev => { if (!cartao.classList.contains("aberto") || ev.target.id === "pc-outra") revelar(); });
-  cartao.addEventListener("keydown", ev => { if ((ev.key === "Enter" || ev.key === " ") && !cartao.classList.contains("aberto")) { ev.preventDefault(); revelar(); } });
-
-  // Contadores de leitores: o do topo conta ao abrir, o de baixo quando aparece na tela
-  function contar(el) {
-    if (reduzir) return;
-    const alvo = 20000, dur = 1600, t0 = performance.now();
-    (function passo(t) {
-      const p = Math.min(Math.max(t - t0, 0) / dur, 1);
-      el.textContent = Math.round(alvo * (1 - Math.pow(1 - p, 3))).toLocaleString("pt-BR");
-      if (p < 1) requestAnimationFrame(passo);
-    })(t0);
-  }
-  contar(document.getElementById("contador"));
-
-  // Barra fixa: aparece depois do topo e some quando a oferta está na tela
-  const barra = document.getElementById("barra");
-  let topoVisivel = true, ofertaVisivel = false;
-  const atualiza = () => barra.classList.toggle("on", !topoVisivel && !ofertaVisivel);
-  new IntersectionObserver(([e]) => { topoVisivel = e.isIntersecting; atualiza(); }).observe(document.querySelector(".hero .cta"));
-  new IntersectionObserver(([e]) => { ofertaVisivel = e.isIntersecting; atualiza(); }, { threshold: .25 }).observe(document.querySelector(".oferta"));
-
-  // Carrossel: bolinhas, destaque do slide central e avanço automático
-  function carrossel(trilho, bol, intervalo) {
-    const slides = [...trilho.children];
-    let atual = 0, parado = false, visivel = false, desde = Date.now();
-    slides.forEach((s, i) => {
-      const b = document.createElement("button"); b.setAttribute("aria-label", "Ver item " + (i + 1));
-      b.onclick = () => { parado = true; irPara(i); }; bol.appendChild(b);
-    });
-    function irPara(i) { const s = slides[i]; trilho.scrollTo({ left: s.offsetLeft - (trilho.clientWidth - s.clientWidth) / 2, behavior: "smooth" }); }
-    function marca() {
-      const meio = trilho.scrollLeft + trilho.clientWidth / 2;
-      let melhor = 0, dist = Infinity;
-      slides.forEach((s, i) => { const d = Math.abs(s.offsetLeft + s.clientWidth / 2 - meio); if (d < dist) { dist = d; melhor = i; } });
-      if (melhor !== atual) desde = Date.now();
-      atual = melhor;
-      slides.forEach((s, i) => {
-        s.classList.toggle("ativo", i === melhor);
-        const v = s.querySelector("video");
-        if (v) { if (i === melhor) v.play().catch(() => {}); else v.pause(); }
-      });
-      [...bol.children].forEach((b, i) => b.classList.toggle("ativo", i === melhor));
-    }
-    trilho.addEventListener("scroll", () => requestAnimationFrame(marca), { passive: true });
-    ["touchstart", "pointerdown", "wheel"].forEach(ev => trilho.addEventListener(ev, () => { parado = true; }, { passive: true }));
-    new IntersectionObserver(([e]) => { visivel = e.isIntersecting; }, { threshold: .4 }).observe(trilho);
-    // Avança sozinho até a pessoa tocar; no vídeo espera mais tempo
-    if (!reduzir) setInterval(() => {
-      if (parado || !visivel) return;
-      const espera = slides[atual].querySelector("video") ? 9000 : intervalo;
-      if (Date.now() - desde >= espera) irPara((atual + 1) % slides.length);
-    }, 500);
-    marca();
-  }
-  if (document.getElementById("trilho")) carrossel(document.getElementById("trilho"), document.getElementById("bolinhas"), 3500);
-  carrossel(document.getElementById("trilho-depo"), document.getElementById("bolinhas-depo"), 5000);
+  fill();
+  document.getElementById("card-front").addEventListener("click", function () { card.classList.add("open"); });
+  document.getElementById("again").addEventListener("click", function () {
+    card.classList.remove("open");
+    setTimeout(function () { i++; fill(); card.classList.add("open"); }, 650);
+  });
+})();
 </script>
-</body>
-</html>
